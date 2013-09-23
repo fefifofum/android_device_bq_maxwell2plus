@@ -1,0 +1,21 @@
+
+#
+# MAXWELL2PLUS_BUILD_PROPERTIES
+#
+# Graphics
+ro.opengles.version=131072
+persist.sys.strictmode.visual=false
+ro.sf.lcd_density=160
+testing.mediascanner.skiplist=/mnt/sdcard/Android/
+ro.sf.hwrotation=180
+
+# Ril
+rild.libargs=-d_/dev/ttyUSB1
+ril.pppchannel=/dev/ttyUSB2
+rild.libpath=/system/lib/libril-rk29-dataonly.so
+ril.function.dataonly=1
+
+# Facelock
+ro.config.facelock=enable_facelock
+persist.facelock.detect_cutoff=5000
+persist.facelock.recog_cutoff=5000

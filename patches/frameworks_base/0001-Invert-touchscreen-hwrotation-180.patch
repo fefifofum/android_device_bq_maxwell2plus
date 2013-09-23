@@ -1,0 +1,48 @@
+From 51190f8e9ac44151e41303ad9c5dbf8ef2d852ad Mon Sep 17 00:00:00 2001
+From: fefifofum <fefifofum@email.com>
+Date: Tue, 13 Aug 2013 21:56:05 +0200
+Subject: [PATCH] Invert touchscreen hwrotation 180
+
+---
+ InputReader.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/services/input/InputReader.cpp b/services/input/InputReader.cpp
+index 5fee292..ba742f9 100644
+--- a/services/input/InputReader.cpp
++++ b/services/input/InputReader.cpp
+@@ -4118,7 +4118,7 @@ void TouchInputMapper::cookPointerData() {
+         // Adjust coords for surface orientation.
+         float x, y;
+         switch (mSurfaceOrientation) {
+-        case DISPLAY_ORIENTATION_90:
++        case DISPLAY_ORIENTATION_270:
+             x = float(in.y - mRawPointerAxes.y.minValue) * mYScale;
+             y = float(mRawPointerAxes.x.maxValue - in.x) * mXScale;
+             orientation -= M_PI_2;
+@@ -4126,11 +4126,11 @@ void TouchInputMapper::cookPointerData() {
+                 orientation += M_PI;
+             }
+             break;
+-        case DISPLAY_ORIENTATION_180:
++        default:
+             x = float(mRawPointerAxes.x.maxValue - in.x) * mXScale;
+             y = float(mRawPointerAxes.y.maxValue - in.y) * mYScale;
+             break;
+-        case DISPLAY_ORIENTATION_270:
++        case DISPLAY_ORIENTATION_90:
+             x = float(mRawPointerAxes.y.maxValue - in.y) * mYScale;
+             y = float(in.x - mRawPointerAxes.x.minValue) * mXScale;
+             orientation += M_PI_2;
+@@ -4138,7 +4138,7 @@ void TouchInputMapper::cookPointerData() {
+                 orientation -= M_PI;
+             }
+             break;
+-        default:
++        case DISPLAY_ORIENTATION_180:
+             x = float(in.x - mRawPointerAxes.x.minValue) * mXScale;
+             y = float(in.y - mRawPointerAxes.y.minValue) * mYScale;
+             break;
+-- 
+1.8.1.2
+

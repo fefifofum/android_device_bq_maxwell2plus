@@ -1,0 +1,32 @@
+From 5c6ac6fda72fe3fa1cb4ce375c6ffd28ab2b6058 Mon Sep 17 00:00:00 2001
+From: Adam Farden <adam@farden.cz>
+Date: Fri, 19 Apr 2013 16:07:07 +0200
+Subject: [PATCH] Increase the number of layers bufferDequeue can use
+
+Change-Id: I4fc346c08446ba4d517484c1341ab3facf65e97e
+---
+ .../surfaceflinger/DisplayHardware/HWComposer.cpp  |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/services/surfaceflinger/DisplayHardware/HWComposer.cpp b/services/surfaceflinger/DisplayHardware/HWComposer.cpp
+index ae7c196..9d60efa 100644
+--- a/services/surfaceflinger/DisplayHardware/HWComposer.cpp
++++ b/services/surfaceflinger/DisplayHardware/HWComposer.cpp
+@@ -154,11 +154,11 @@ status_t HWComposer::createWorkList(size_t numLayers) {
+     if (mHwc) {
+         if (!mList || mCapacity < numLayers) {
+             free(mList);
+-            size_t size = sizeof(hwc_layer_list) + numLayers*sizeof(hwc_layer_t);
++            size_t size = sizeof(hwc_layer_list) + (numLayers+10)*sizeof(hwc_layer_t);
+             mList = (hwc_layer_list_t*)malloc(size);
+-            mCapacity = numLayers;
++            mCapacity = numLayers + 10;
++            mList->flags = HWC_GEOMETRY_CHANGED;
+         }
+-        mList->flags = HWC_GEOMETRY_CHANGED;
+         mList->numHwLayers = numLayers;
+     }
+     return NO_ERROR;
+-- 
+1.7.9.5
+
