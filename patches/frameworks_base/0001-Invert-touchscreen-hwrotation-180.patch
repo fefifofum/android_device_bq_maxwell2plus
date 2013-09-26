@@ -1,0 +1,48 @@
+From 043a1154419ac11c54da03fb62927e12fc80061e Mon Sep 17 00:00:00 2001
+From: fefifofum <fefifofum@email.com>
+Date: Thu, 29 Aug 2013 17:11:21 +0200
+Subject: [PATCH] Invert touchscreen to match hwrotation 180
+
+---
+ InputReader.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/services/input/InputReader.cpp b/services/input/InputReader.cpp
+index baba77d..342eb10 100644
+--- a/services/input/InputReader.cpp
++++ b/services/input/InputReader.cpp
+@@ -4197,7 +4197,7 @@ void TouchInputMapper::cookPointerData() {
+         // Adjust coords for surface orientation.
+         float x, y;
+         switch (mSurfaceOrientation) {
+-        case DISPLAY_ORIENTATION_90:
++        case DISPLAY_ORIENTATION_270:
+             x = float(in.y - mRawPointerAxes.y.minValue) * mYScale + mYTranslate;
+             y = float(mRawPointerAxes.x.maxValue - in.x) * mXScale + mXTranslate;
+             orientation -= M_PI_2;
+@@ -4205,11 +4205,11 @@ void TouchInputMapper::cookPointerData() {
+                 orientation += M_PI;
+             }
+             break;
+-        case DISPLAY_ORIENTATION_180:
++        default:
+             x = float(mRawPointerAxes.x.maxValue - in.x) * mXScale + mXTranslate;
+             y = float(mRawPointerAxes.y.maxValue - in.y) * mYScale + mYTranslate;
+             break;
+-        case DISPLAY_ORIENTATION_270:
++        case DISPLAY_ORIENTATION_90:
+             x = float(mRawPointerAxes.y.maxValue - in.y) * mYScale + mYTranslate;
+             y = float(in.x - mRawPointerAxes.x.minValue) * mXScale + mXTranslate;
+             orientation += M_PI_2;
+@@ -4217,7 +4217,7 @@ void TouchInputMapper::cookPointerData() {
+                 orientation -= M_PI;
+             }
+             break;
+-        default:
++        case DISPLAY_ORIENTATION_180:
+             x = float(in.x - mRawPointerAxes.x.minValue) * mXScale + mXTranslate;
+             y = float(in.y - mRawPointerAxes.y.minValue) * mYScale + mYTranslate;
+             break;
+-- 
+1.8.1.2
+
