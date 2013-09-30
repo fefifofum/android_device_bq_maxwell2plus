@@ -168,7 +168,7 @@ service dhcpcd_eth0 /system/bin/dhcpcd -ABKL
     class main
     disabled
     oneshot
-			
+
 service iprenew_eth0 system/bin/dhcpcd -n
     class main
     disabled

@@ -73,7 +73,8 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/ramdisk/init.rc:root/init.rc \
     device/bq/maxwell2plus/ramdisk/init.rk30board.rc:root/init.rk30board.rc \
     device/bq/maxwell2plus/ramdisk/init.rk30board.usb.rc:root/init.rk30board.usb.rc \
-    device/bq/maxwell2plus/ramdisk/ueventd.rk30board.rc:root/ueventd.rk30board.rc
+    device/bq/maxwell2plus/ramdisk/ueventd.rk30board.rc:root/ueventd.rk30board.rc \
+    $(call find-copy-subdir-files,*,device/bq/maxwell2plus/ramdisk/images,root/res/images/charger)
 
 # Ramdisk blobs
 PRODUCT_COPY_FILES += \
@@ -86,10 +87,6 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/ramdisk/misc.img:root/misc.img \
     device/bq/maxwell2plus/ramdisk/rk30xxnand_ko.ko.3.0.8+:root/rk30xxnand_ko.ko.3.0.8+ \
 #    device/bq/maxwell2plus/ramdisk/rk30xxnand_ko.ko.3.0.36+:root/rk30xxnand_ko.ko.3.0.36+
-
-# Ramdisk charging images
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/bq/maxwell2plus/ramdisk/images,root/res/images/charger)
 
 # Audio
 PRODUCT_PACKAGES += \

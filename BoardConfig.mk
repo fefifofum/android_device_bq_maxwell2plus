@@ -40,13 +40,18 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 
-TARGET_SPECIFIC_HEADER_PATH += device/bq/maxwell2plus/include
-
 # Kernel & Bootloader
 TARGET_PREBUILT_KERNEL := device/bq/maxwell2plus/kernel
 TARGET_BOOTLOADER_BOARD_NAME := bq_Maxwell2Plus
 BOARD_KERNEL_BASE := 0x60400000
 BOARD_KERNEL_PAGESIZE := 16384
+
+# Partition sizes
+BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 576716800
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 14906032128
+BOARD_FLASH_BLOCK_SIZE := 16384
 
 # Graphics
 BOARD_EGL_CFG := device/bq/maxwell2plus/config/egl.cfg
@@ -69,19 +74,12 @@ BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 WIFI_DRIVER_MODULE_NAME := "wlan"
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/rkwifi.ko"
-WIFI_DRIVER_FW_PATH_STA := "/etc/firmware/fw_RK903b2.bin"
-WIFI_DRIVER_FW_PATH_AP := "/etc/firmware/fw_RK903b2_apsta.bin"
-WIFI_DRIVER_FW_PATH_P2P := "/etc/firmware/fw_RK903b2_p2p.bin"
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/bq/maxwell2plus/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := device/bq/maxwell2plus/bluetooth/vnd_maxwell2plus.txt
-
-# Audio
-BOARD_USES_GENERIC_AUDIO := true
-BOARD_USES_ALSA_AUDIO := false
 
 # Avoid the generation of ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
@@ -120,10 +118,3 @@ BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun/file
 BOARD_UMS_2ND_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun1/file
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
-
-# Partition sizes
-BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 576716800
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 14906032128
-BOARD_FLASH_BLOCK_SIZE := 16384
