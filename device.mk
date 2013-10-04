@@ -16,29 +16,15 @@
 
 PRODUCT_CHARACTERISTICS := tablet
 
-$(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
-
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
-$(call inherit-product, vendor/bq/maxwell2plus/maxwell2plus-vendor.mk)
+PRODUCT_TAGS += dalvik.gc.type-precise
 
 DEVICE_PACKAGE_OVERLAYS += device/bq/maxwell2plus/overlay
-
-PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_AAPT_CONFIG := normal mdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
 
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=30 \
-    persist.sys.usb.config=mtp \
-    persist.sys.timezone=Europe/Madrid \
-    ro.product.locale.language=es \
-    ro.product.locale.region=ES
-
-# Install the features available on this device
+# Permissions files
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
@@ -53,6 +39,7 @@ PRODUCT_COPY_FILES += \
 # Config files
 PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/config/serial_number:system/bin/serial_number \
+    device/bq/maxwell2plus/config/usb_modeswitch.sh:system/bin/usb_modeswitch.sh \
     device/bq/maxwell2plus/config/audio_policy.conf:system/etc/audio_policy.conf \
     device/bq/maxwell2plus/config/media_profiles.xml:system/etc/media_profiles.xml \
     device/bq/maxwell2plus/config/media_codecs.xml:system/etc/media_codecs.xml \
@@ -60,11 +47,7 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/config/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
     device/bq/maxwell2plus/config/egl.cfg:system/lib/egl/egl.cfg \
     device/bq/maxwell2plus/config/rk29-keypad.kl:/system/usr/keylayout/rk29-keypad.kl \
-    device/bq/maxwell2plus/config/vold.fstab:system/etc/vold.fstab
-
-# USB modeswitch
-PRODUCT_COPY_FILES += \
-    device/bq/maxwell2plus/config/usb_modeswitch.sh:system/bin/usb_modeswitch.sh \
+    device/bq/maxwell2plus/config/vold.fstab:system/etc/vold.fstab \
     $(call find-copy-subdir-files,*,device/bq/maxwell2plus/config/usb_modeswitch.d,system/etc/usb_modeswitch.d)
 
 # Ramdisk files
@@ -86,7 +69,7 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/ramdisk/charger:root/charger \
     device/bq/maxwell2plus/ramdisk/misc.img:root/misc.img \
     device/bq/maxwell2plus/ramdisk/rk30xxnand_ko.ko.3.0.8+:root/rk30xxnand_ko.ko.3.0.8+ \
-#    device/bq/maxwell2plus/ramdisk/rk30xxnand_ko.ko.3.0.36+:root/rk30xxnand_ko.ko.3.0.36+
+    device/bq/maxwell2plus/ramdisk/rk30xxnand_ko.ko.3.0.36+:root/rk30xxnand_ko.ko.3.0.36+
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -101,3 +84,15 @@ PRODUCT_PACKAGES += \
     librs_jni \
     libnetcmdiface \
     com.android.future.usb.accessory
+
+# Default config
+PRODUCT_PROPERTY_OVERRIDES += \
+    wifi.interface=wlan0 \
+    wifi.supplicant_scan_interval=30 \
+    persist.sys.usb.config=mtp \
+    persist.sys.timezone=Europe/Amsterdam \
+    ro.product.locale.language=es \
+    ro.product.locale.region=ES
+
+# Dalvik heap config
+$(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)

@@ -20,7 +20,7 @@
 -include vendor/bq/maxwell2plus/BoardConfigVendor.mk
 
 # CPU and Platform
-TARGET_BOARD_PLATFORM := rk30xx
+TARGET_BOARD_PLATFORM := rk30board
 TARGET_BOARD_PLATFORM_GPU := mali400
 
 TARGET_NO_BOOTLOADER := true
@@ -29,10 +29,12 @@ TARGET_NO_RADIOIMAGE := true
 TARGET_CPU_ABI  := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
+
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT_CPU := cortex-a9
 TARGET_ARCH_VARIANT_FPU := neon
+
 ARCH_ARM_HAVE_NEON := true
 ARCH_ARM_HAVE_ARMV7A := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
@@ -41,8 +43,8 @@ TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 
 # Kernel & Bootloader
-TARGET_PREBUILT_KERNEL := device/bq/maxwell2plus/kernel
 TARGET_BOOTLOADER_BOARD_NAME := bq_Maxwell2Plus
+TARGET_PREBUILT_KERNEL := device/bq/maxwell2plus/kernel
 BOARD_KERNEL_BASE := 0x60400000
 BOARD_KERNEL_PAGESIZE := 16384
 
