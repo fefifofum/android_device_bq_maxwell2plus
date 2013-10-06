@@ -144,6 +144,11 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
+service hostapd /system/bin/hostapd /data/misc/wifi/hostapd.conf
+    class main
+    disabled
+    oneshot
+
 service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
     class main
     disabled

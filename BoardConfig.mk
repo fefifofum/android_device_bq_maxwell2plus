@@ -76,6 +76,10 @@ BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 WIFI_DRIVER_MODULE_NAME := "wlan"
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/rkwifi.ko"
+WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/wlan/parameters/firmware_path"
+WIFI_DRIVER_FW_PATH_STA := "/etc/firmware/fw_RK903b2.bin"
+WIFI_DRIVER_FW_PATH_AP := "/etc/firmware/fw_RK903b2_apsta.bin"
+WIFI_DRIVER_FW_PATH_P2P := "/etc/firmware/fw_RK903b2_p2p.bin"
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
