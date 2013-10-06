@@ -71,6 +71,11 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/ramdisk/rk30xxnand_ko.ko.3.0.8+:root/rk30xxnand_ko.ko.3.0.8+ \
     device/bq/maxwell2plus/ramdisk/rk30xxnand_ko.ko.3.0.36+:root/rk30xxnand_ko.ko.3.0.36+
 
+# APN and SPN overrides
+PRODUCT_COPY_FILES += \
+    vendor/cm/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml \
+    vendor/cm/prebuilt/common/etc/spn-conf.xml:system/etc/spn-conf.xml
+
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
@@ -79,6 +84,7 @@ PRODUCT_PACKAGES += \
 
 # Other
 PRODUCT_PACKAGES += \
+    rild \
     make_ext4fs \
     setup_fs \
     librs_jni \
