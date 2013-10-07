@@ -15,13 +15,13 @@
 
 # Inherit from those products. Most specific first.
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
 $(call inherit-product, device/bq/maxwell2plus/device.mk)
 
 $(call inherit-product, vendor/bq/maxwell2plus/maxwell2plus-vendor.mk)
+
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Set those variables here to overwrite the inherited values.
 PRODUCT_NAME := maxwell2plus

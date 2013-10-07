@@ -18,10 +18,10 @@ PRODUCT_CHARACTERISTICS := tablet
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-DEVICE_PACKAGE_OVERLAYS += device/bq/maxwell2plus/overlay
-
 PRODUCT_AAPT_CONFIG := normal mdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
+
+DEVICE_PACKAGE_OVERLAYS += device/bq/maxwell2plus/overlay
 
 
 # Permissions files
@@ -36,10 +36,16 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
-# Config files
+# Scripts
 PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/config/serial_number:system/bin/serial_number \
     device/bq/maxwell2plus/config/usb_modeswitch.sh:system/bin/usb_modeswitch.sh \
+    device/bq/maxwell2plus/config/call-pppd:system/etc/ppp/call-pppd \
+    device/bq/maxwell2plus/config/ip-down:system/etc/ppp/ip-down \
+    device/bq/maxwell2plus/config/ip-up:system/etc/ppp/ip-up
+
+# Config files
+PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/config/audio_policy.conf:system/etc/audio_policy.conf \
     device/bq/maxwell2plus/config/media_profiles.xml:system/etc/media_profiles.xml \
     device/bq/maxwell2plus/config/media_codecs.xml:system/etc/media_codecs.xml \
