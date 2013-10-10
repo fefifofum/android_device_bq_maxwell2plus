@@ -36,16 +36,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
-# Scripts
-PRODUCT_COPY_FILES += \
-    device/bq/maxwell2plus/config/serial_number:system/bin/serial_number \
-    device/bq/maxwell2plus/config/usb_modeswitch.sh:system/bin/usb_modeswitch.sh \
-    device/bq/maxwell2plus/config/call-pppd:system/etc/ppp/call-pppd \
-    device/bq/maxwell2plus/config/ip-down:system/etc/ppp/ip-down \
-    device/bq/maxwell2plus/config/ip-up:system/etc/ppp/ip-up
-
 # Config files
 PRODUCT_COPY_FILES += \
+    device/bq/maxwell2plus/config/serial_number:system/bin/serial_number \
     device/bq/maxwell2plus/config/audio_policy.conf:system/etc/audio_policy.conf \
     device/bq/maxwell2plus/config/media_profiles.xml:system/etc/media_profiles.xml \
     device/bq/maxwell2plus/config/media_codecs.xml:system/etc/media_codecs.xml \
@@ -53,8 +46,7 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/config/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
     device/bq/maxwell2plus/config/egl.cfg:system/lib/egl/egl.cfg \
     device/bq/maxwell2plus/config/rk29-keypad.kl:/system/usr/keylayout/rk29-keypad.kl \
-    device/bq/maxwell2plus/config/vold.fstab:system/etc/vold.fstab \
-    $(call find-copy-subdir-files,*,device/bq/maxwell2plus/config/usb_modeswitch.d,system/etc/usb_modeswitch.d)
+    device/bq/maxwell2plus/config/vold.fstab:system/etc/vold.fstab
 
 # Ramdisk files
 PRODUCT_COPY_FILES += \
@@ -77,11 +69,6 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/ramdisk/rk30xxnand_ko.ko.3.0.8+:root/rk30xxnand_ko.ko.3.0.8+ \
     device/bq/maxwell2plus/ramdisk/rk30xxnand_ko.ko.3.0.36+:root/rk30xxnand_ko.ko.3.0.36+
 
-# APN and SPN overrides
-PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml \
-    vendor/cm/prebuilt/common/etc/spn-conf.xml:system/etc/spn-conf.xml
-
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
@@ -90,7 +77,6 @@ PRODUCT_PACKAGES += \
 
 # Other
 PRODUCT_PACKAGES += \
-    rild \
     make_ext4fs \
     setup_fs \
     librs_jni \
