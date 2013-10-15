@@ -111,7 +111,7 @@ service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
     disabled
 
 # Set serial number
-service serial_number /system/bin/sh /system/bin/serial_number
+service serial_number /system/bin/sh /system/bin/serial_number.sh
     disabled
     oneshot
 

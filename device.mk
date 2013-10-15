@@ -38,7 +38,7 @@ PRODUCT_COPY_FILES += \
 
 # Config files
 PRODUCT_COPY_FILES += \
-    device/bq/maxwell2plus/config/serial_number:system/bin/serial_number \
+    device/bq/maxwell2plus/config/serial_number.sh:system/bin/serial_number.sh \
     device/bq/maxwell2plus/config/audio_policy.conf:system/etc/audio_policy.conf \
     device/bq/maxwell2plus/config/media_profiles.xml:system/etc/media_profiles.xml \
     device/bq/maxwell2plus/config/media_codecs.xml:system/etc/media_codecs.xml \

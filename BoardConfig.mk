@@ -17,14 +17,18 @@
 # configurations which are actually buildable (e.g. through lunch)
 #
 
+USE_CAMERA_STUB := true
+
 -include vendor/bq/maxwell2plus/BoardConfigVendor.mk
 
-# CPU and Platform
-TARGET_BOARD_PLATFORM := rk30board
-TARGET_BOARD_PLATFORM_GPU := mali400
-
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := bq_Maxwell2Plus
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
+
+# Platform
+TARGET_BOARD_PLATFORM := rk30board
+TARGET_BOARD_PLATFORM_GPU := mali400
 
 TARGET_CPU_ABI  := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -42,13 +46,12 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 
-# Kernel & Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := bq_Maxwell2Plus
+# Kernel
 TARGET_PREBUILT_KERNEL := device/bq/maxwell2plus/kernel
 BOARD_KERNEL_BASE := 0x60400000
 BOARD_KERNEL_PAGESIZE := 16384
 
-# Partition sizes
+# Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 576716800
@@ -58,28 +61,27 @@ BOARD_FLASH_BLOCK_SIZE := 16384
 # Graphics
 BOARD_EGL_CFG := device/bq/maxwell2plus/config/egl.cfg
 USE_OPENGL_RENDERER := true
+BOARD_USES_HWCOMPOSER := true
 TARGET_USES_ION := true
 BOARD_USES_HDMI := true
 TARGET_HAVE_HDMI_OUT := true
-BOARD_USES_HWCOMPOSER := true
-
-# Camera
-BOARD_NEEDS_MEMORYHEAPPMEM := true
-USE_CAMERA_STUB := true
 
 # Wi-Fi
 BOARD_WLAN_DEVICE := bcmdhd
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_LEGACY_NL80211_STA_EVENTS := true
+
 WIFI_DRIVER_MODULE_NAME := "wlan"
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/rkwifi.ko"
 WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/wlan/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA := "/etc/firmware/fw_RK903b2.bin"
 WIFI_DRIVER_FW_PATH_AP := "/etc/firmware/fw_RK903b2_apsta.bin"
 WIFI_DRIVER_FW_PATH_P2P := "/etc/firmware/fw_RK903b2_p2p.bin"
+#WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/firmware/fw_RK903b2.bin nvram_path=/system/etc/firmware/nvram_RK903_26M.cal"
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -102,9 +104,9 @@ TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 
 # UMS
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun/file
-BOARD_UMS_2ND_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun1/file
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+BOARD_UMS_LUNFILE := /sys/class/android_usb/f_mass_storage/lun/file
+BOARD_UMS_2ND_LUNFILE := /sys/class/android_usb/f_mass_storage/lun1/file
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/f_mass_storage/lun/file
 
 # OTA
 TARGET_OTA_ASSERT_DEVICE := maxwell2plus,bq_Maxwell2Plus
