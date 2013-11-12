@@ -81,7 +81,6 @@ WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/wlan/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA := "/etc/firmware/fw_RK903b2.bin"
 WIFI_DRIVER_FW_PATH_AP := "/etc/firmware/fw_RK903b2_apsta.bin"
 WIFI_DRIVER_FW_PATH_P2P := "/etc/firmware/fw_RK903b2_p2p.bin"
-#WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/firmware/fw_RK903b2.bin nvram_path=/system/etc/firmware/nvram_RK903_26M.cal"
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
