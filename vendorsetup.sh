@@ -18,3 +18,7 @@ add_lunch_combo cm_maxwell2plus-eng
 
 # Run device patches on the tree.
 sh device/bq/maxwell2plus/patches/apply.sh
+
+# Copy HDMI images.
+cp device/bq/maxwell2plus/hdmi-images/ic_settings_hdmi.png packages/apps/Settings/res/drawable-mdpi/ic_settings_hdmi.png
+cp device/bq/maxwell2plus/hdmi-images/ic_settings_screen_scale.png packages/apps/Settings/res/drawable-mdpi/ic_settings_screen_scale.png
