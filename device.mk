@@ -50,7 +50,7 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk files
 PRODUCT_COPY_FILES += \
-    device/bq/maxwell2plus/ramdisk/fstab.rk30sdk:root/fstab.rk30sdk \
+    device/bq/maxwell2plus/ramdisk/fstab.rk30board:root/fstab.rk30board \
     device/bq/maxwell2plus/ramdisk/init.rc:root/init.rc \
     device/bq/maxwell2plus/ramdisk/init.rk30board.rc:root/init.rk30board.rc \
     device/bq/maxwell2plus/ramdisk/init.rk30board.usb.rc:root/init.rk30board.usb.rc \
