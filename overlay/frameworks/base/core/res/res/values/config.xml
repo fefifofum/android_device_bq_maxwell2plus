@@ -127,4 +127,22 @@
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
          autodetected from the Configuration. -->
     <bool name="config_showNavigationBar">true</bool>
+
+    <!--  Maximum number of supported users -->
+    <integer name="config_multiuserMaximumUsers">8</integer>
+
+    <!-- Max space (in MB) allocated to DownloadManager to store the downloaded files
+         if they are to be stored in DownloadManager's data dir,
+         which typically is /data/data/com.android.providers.downloads/files. -->
+    <integer name="config_downloadDataDirSize">200</integer>
+
+    <!-- When the free space available in DownloadManager's data dir falls
+         below the percentage value specified by this param, DownloadManager
+         starts removing files to try to make percentage of available
+         free space above this threshold value. --> 
+    <integer name="config_downloadDataDirLowSpaceThreshold">10</integer>
+
+    <!-- Base "touch slop" value used by ViewConfiguration as a
+         movement threshold where scrolling should begin. -->
+    <dimen name="config_viewConfigurationTouchSlop">12dp</dimen>
 </resources>
