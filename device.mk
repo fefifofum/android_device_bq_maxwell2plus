@@ -50,24 +50,23 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk files
 PRODUCT_COPY_FILES += \
-    device/bq/maxwell2plus/ramdisk/fstab.rk30board:root/fstab.rk30board \
-    device/bq/maxwell2plus/ramdisk/init.rc:root/init.rc \
-    device/bq/maxwell2plus/ramdisk/init.rk30board.rc:root/init.rk30board.rc \
-    device/bq/maxwell2plus/ramdisk/init.rk30board.usb.rc:root/init.rk30board.usb.rc \
-    device/bq/maxwell2plus/ramdisk/ueventd.rk30board.rc:root/ueventd.rk30board.rc
+    device/bq/maxwell2plus/rootdir/fstab.rk30board:root/fstab.rk30board \
+    device/bq/maxwell2plus/rootdir/init.rk30board.rc:root/init.rk30board.rc \
+    device/bq/maxwell2plus/rootdir/init.rk30board.usb.rc:root/init.rk30board.usb.rc \
+    device/bq/maxwell2plus/rootdir/ueventd.rk30board.rc:root/ueventd.rk30board.rc
 
 # Ramdisk blobs
 PRODUCT_COPY_FILES += \
-    device/bq/maxwell2plus/ramdisk/sbin/e2fsck:root/sbin/e2fsck \
-    device/bq/maxwell2plus/ramdisk/sbin/mkdosfs:root/sbin/mkdosfs \
-    device/bq/maxwell2plus/ramdisk/sbin/mke2fs:root/sbin/mke2fs \
-    device/bq/maxwell2plus/ramdisk/sbin/resize2fs:root/sbin/resize2fs \
-    device/bq/maxwell2plus/ramdisk/init:root/init \
-    device/bq/maxwell2plus/ramdisk/misc.img:root/misc.img \
-    device/bq/maxwell2plus/ramdisk/rk30xxnand_ko.ko.3.0.8+:root/rk30xxnand_ko.ko.3.0.8+ \
-    device/bq/maxwell2plus/ramdisk/rk30xxnand_ko.ko.3.0.36+:root/rk30xxnand_ko.ko.3.0.36+ \
-    device/bq/maxwell2plus/ramdisk/charger:root/charger \
-    $(call find-copy-subdir-files,*,device/bq/maxwell2plus/ramdisk/images,root/res/images/charger)
+    device/bq/maxwell2plus/rootdir/sbin/e2fsck:root/sbin/e2fsck \
+    device/bq/maxwell2plus/rootdir/sbin/mkdosfs:root/sbin/mkdosfs \
+    device/bq/maxwell2plus/rootdir/sbin/mke2fs:root/sbin/mke2fs \
+    device/bq/maxwell2plus/rootdir/sbin/resize2fs:root/sbin/resize2fs \
+    device/bq/maxwell2plus/rootdir/init:root/init \
+    device/bq/maxwell2plus/rootdir/misc.img:root/misc.img \
+    device/bq/maxwell2plus/rootdir/rk30xxnand_ko.ko.3.0.8+:root/rk30xxnand_ko.ko.3.0.8+ \
+    device/bq/maxwell2plus/rootdir/rk30xxnand_ko.ko.3.0.36+:root/rk30xxnand_ko.ko.3.0.36+ \
+    device/bq/maxwell2plus/rootdir/charger:root/charger \
+    $(call find-copy-subdir-files,*,device/bq/maxwell2plus/rootdir/images,root/res/images/charger)
 
 # Audio
 PRODUCT_PACKAGES += \

@@ -110,7 +110,6 @@ TARGET_OTA_ASSERT_DEVICE := maxwell2plus,bq_Maxwell2Plus
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/bq/maxwell2plus/releasetools/rk_ota_from_target_files
 
 # Recovery
-TARGET_PROVIDES_INIT_RC := true
 TARGET_RECOVERY_INITRC := device/bq/maxwell2plus/recovery.rc
 TARGET_RECOVERY_FSTAB := device/bq/maxwell2plus/recovery.fstab
 TARGET_RECOVERY_PRE_COMMAND := "busybox dd if=/misc.img of=/dev/block/mtdblock0; sync"
