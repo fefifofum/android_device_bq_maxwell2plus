@@ -18,5 +18,5 @@
 sh device/bq/maxwell2plus/patches/apply.sh
 
 # Copy HDMI icons.
-cp device/bq/maxwell2plus/hdmi-icons/ic_settings_hdmi.png packages/apps/Settings/res/drawable-mdpi/ic_settings_hdmi.png
-cp device/bq/maxwell2plus/hdmi-icons/ic_settings_screen_scale.png packages/apps/Settings/res/drawable-mdpi/ic_settings_screen_scale.png
+cp device/bq/maxwell2plus/config/hdmi-icons/ic_settings_hdmi.png packages/apps/Settings/res/drawable-mdpi/ic_settings_hdmi.png
+cp device/bq/maxwell2plus/config/hdmi-icons/ic_settings_screen_scale.png packages/apps/Settings/res/drawable-mdpi/ic_settings_screen_scale.png
