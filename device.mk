@@ -71,6 +71,7 @@ PRODUCT_COPY_FILES += \
 # HAL
 PRODUCT_PACKAGES += \
     lights.rk30board \
+    power.rk30xx
 
 # Audio
 PRODUCT_PACKAGES += \
