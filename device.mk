@@ -68,6 +68,10 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/rootdir/charger:root/charger \
     $(call find-copy-subdir-files,*,device/bq/maxwell2plus/rootdir/images,root/res/images/charger)
 
+# HAL
+PRODUCT_PACKAGES += \
+    lights.rk30board \
+
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \

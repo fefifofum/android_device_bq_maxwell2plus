@@ -86,6 +86,9 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/bq/maxwell2plus/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := device/bq/maxwell2plus/bluetooth/vnd_maxwell2plus.txt
 
+# Lights
+TARGET_PROVIDES_LIBLIGHTS := true
+
 # Avoid the generation of ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
 
