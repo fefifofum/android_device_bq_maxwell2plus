@@ -83,11 +83,8 @@ WIFI_DRIVER_MODULE_NAME     := "wlan"
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/bq/maxwell2plus/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/bq/maxwell2plus/bluetooth/vnd_maxwell2plus.txt
-
-# Lights
-TARGET_PROVIDES_LIBLIGHTS := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/bq/maxwell2plus/hardware/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := device/bq/maxwell2plus/hardware/bluetooth/vnd_maxwell2plus.txt
 
 # Avoid the generation of ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
@@ -104,7 +101,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storag
 
 # OTA
 TARGET_OTA_ASSERT_DEVICE := maxwell2plus,bq_Maxwell2Plus
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/bq/maxwell2plus/releasetools/rk_ota_from_target_files
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/bq/maxwell2plus/rootdir/releasetools/rk_ota_from_target_files
 
 # Recovery
 TARGET_RECOVERY_INITRC := device/bq/maxwell2plus/rootdir/recovery.rc
