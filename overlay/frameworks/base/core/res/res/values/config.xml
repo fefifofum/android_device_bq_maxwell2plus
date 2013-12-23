@@ -79,12 +79,6 @@
         <item>7</item>
         <item>9</item>
     </integer-array>
-
-    <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
-    <bool translatable="false" name="config_wifi_dual_band_support">false</bool>
-
-    <!-- Boolean indicating whether the wifi chipset has p2p support -->
-    <bool translatable="false" name="config_wifi_p2p_support">false</bool>
     
     <!-- Boolean indicating whether the wifi chipset supports background scanning mechanism.
          This mechanism allows the host to remain in suspend state and the dongle to actively
@@ -138,12 +132,6 @@
          if they are to be stored in DownloadManager's data dir,
          which typically is /data/data/com.android.providers.downloads/files. -->
     <integer name="config_downloadDataDirSize">200</integer>
-
-    <!-- When the free space available in DownloadManager's data dir falls
-         below the percentage value specified by this param, DownloadManager
-         starts removing files to try to make percentage of available
-         free space above this threshold value. --> 
-    <integer name="config_downloadDataDirLowSpaceThreshold">10</integer>
 
     <!-- Base "touch slop" value used by ViewConfiguration as a
          movement threshold where scrolling should begin. -->
