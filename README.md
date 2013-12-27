@@ -12,7 +12,7 @@ Use the following local manifest:
     <?xml version="1.0" encoding="UTF-8"?>
     <manifest>
       <project name="fefifofum/android_device_bq_maxwell2plus" path="device/bq/maxwell2plus" revision="cm-10.1" />
-      <project name="fefifofum/propietary_vendor_bq" path="vendor/bq" revision="cm-10.1" />
+      <project name="fefifofum/proprietary_vendor_bq" path="vendor/bq" revision="cm-10.1" />
     </manifest>
 
 Sync and build:

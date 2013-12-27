@@ -14,7 +14,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-# HAL module implemenation stored in
+# HAL module implementation stored in
 # hw/<POWERS_HARDWARE_MODULE_ID>.<ro.board.platform>.so
 
 include $(CLEAR_VARS)
