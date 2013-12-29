@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+
 PRODUCT_CHARACTERISTICS := tablet
 
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -24,7 +26,7 @@ PRODUCT_AAPT_PREF_CONFIG := tvdpi
 DEVICE_PACKAGE_OVERLAYS += device/bq/maxwell2plus/overlay
 
 
-# Permissions files
+# Hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
@@ -92,8 +94,16 @@ PRODUCT_PACKAGES += \
 
 # Default config
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opengles.version=131072 \
+    ro.sf.lcd_density=213 \
+    ro.sf.hwrotation=180 \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=30 \
+    testing.mediascanner.skiplist=/storage/sdcard0/Android/ \
+    ro.config.facelock=enable_facelock \
+    persist.facelock.detect_cutoff=5000 \
+    persist.facelock.recog_cutoff=5000 \
+    persist.sys.strictmode.visual=false \
     persist.sys.usb.config=mtp \
     persist.sys.timezone=Europe/Amsterdam \
     ro.product.locale.language=es \

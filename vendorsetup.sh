@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+add_lunch_combo full_maxwell2plus-userdebug
+
 # Run device patches on the tree.
 sh device/bq/maxwell2plus/patches/apply.sh
 
