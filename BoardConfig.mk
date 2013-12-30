@@ -89,12 +89,6 @@ NEED_WORKAROUND_CORTEX_A9_745320 := true
 ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
 
-# UMS
-BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun/file
-BOARD_UMS_2ND_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun1/file
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
-
 # OTA
 TARGET_OTA_ASSERT_DEVICE := maxwell2plus,bq_Maxwell2Plus
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/bq/maxwell2plus/releasetools/rk_ota_from_target_files
