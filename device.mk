@@ -50,21 +50,13 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/config/rk29-keypad.kl:/system/usr/keylayout/rk29-keypad.kl \
     device/bq/maxwell2plus/config/vold.fstab:system/etc/vold.fstab
 
-# Ramdisk files
+# Rootdir
 PRODUCT_COPY_FILES += \
+    device/bq/maxwell2plus/rootdir/init:root/init \
     device/bq/maxwell2plus/rootdir/fstab.rk30board:root/fstab.rk30board \
     device/bq/maxwell2plus/rootdir/init.rk30board.rc:root/init.rk30board.rc \
     device/bq/maxwell2plus/rootdir/init.rk30board.usb.rc:root/init.rk30board.usb.rc \
-    device/bq/maxwell2plus/rootdir/ueventd.rk30board.rc:root/ueventd.rk30board.rc
-
-# Ramdisk blobs
-PRODUCT_COPY_FILES += \
-    device/bq/maxwell2plus/rootdir/sbin/e2fsck:root/sbin/e2fsck \
-    device/bq/maxwell2plus/rootdir/sbin/mkdosfs:root/sbin/mkdosfs \
-    device/bq/maxwell2plus/rootdir/sbin/mke2fs:root/sbin/mke2fs \
-    device/bq/maxwell2plus/rootdir/sbin/resize2fs:root/sbin/resize2fs \
-    device/bq/maxwell2plus/rootdir/init:root/init \
-    device/bq/maxwell2plus/rootdir/misc.img:root/misc.img \
+    device/bq/maxwell2plus/rootdir/ueventd.rk30board.rc:root/ueventd.rk30board.rc \
     device/bq/maxwell2plus/rootdir/rk30xxnand_ko.ko.3.0.8+:root/rk30xxnand_ko.ko.3.0.8+ \
     device/bq/maxwell2plus/rootdir/rk30xxnand_ko.ko.3.0.36+:root/rk30xxnand_ko.ko.3.0.36+ \
     device/bq/maxwell2plus/rootdir/charger:root/charger \

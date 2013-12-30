@@ -105,20 +105,7 @@ BOARD_FLASH_BLOCK_SIZE := 16384
 
 # Recovery
 TARGET_RECOVERY_INITRC := device/bq/maxwell2plus/rootdir/recovery.rc
-TARGET_RECOVERY_FSTAB := device/bq/maxwell2plus/rootdir/recovery.fstab
-TARGET_RECOVERY_PRE_COMMAND := "busybox dd if=/misc.img of=/dev/block/mtdblock0; sync"
+TARGET_RECOVERY_PRE_COMMAND := "echo -n boot-recovery | busybox dd of=/dev/block/mtdblock0 count=1 conv=sync; sync"
 TARGET_USERIMAGES_USE_EXT4 := true
-RECOVERY_SDCARD_ON_DATA := true
-TW_FLASH_FROM_STORAGE := true
-TW_INTERNAL_STORAGE_PATH := "/data/media"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
-TW_EXTERNAL_STORAGE_PATH := "/external_sd"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-TW_BRIGHTNESS_PATH := /sys/devices/platform/rk29_backlight/backlight/rk28_bl/brightness
-TW_MAX_BRIGHTNESS := 255
-DEVICE_RESOLUTION := 800x1280
-BOARD_HAS_FLIPPED_SCREEN := true
-RECOVERY_TOUCHSCREEN_FLIP_Y := true
-RECOVERY_TOUCHSCREEN_FLIP_X := true
