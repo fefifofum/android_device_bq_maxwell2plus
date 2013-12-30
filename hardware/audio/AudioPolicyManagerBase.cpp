@@ -24,10 +24,6 @@
 #define ALOGVV(a...) do { } while(0)
 #endif
 
-// A device mask for all audio input devices that are considered "virtual" when evaluating
-// active inputs in getActiveInput()
-#define APM_AUDIO_IN_DEVICE_VIRTUAL_ALL  AUDIO_DEVICE_IN_REMOTE_SUBMIX
-
 #include <utils/Log.h>
 #include <hardware_legacy/AudioPolicyManagerBase.h>
 #include <hardware/audio_effect.h>
@@ -67,10 +63,6 @@ status_t AudioPolicyManagerBase::setDeviceConnectionState(audio_devices_t device
         }
         if (!mHasUsb && audio_is_usb_device(device)) {
             ALOGE("setDeviceConnectionState() invalid USB audio device: %x", device);
-            return BAD_VALUE;
-        }
-        if (!mHasRemoteSubmix && audio_is_remote_submix_device((audio_devices_t)device)) {
-            ALOGE("setDeviceConnectionState() invalid remote submix audio device: %x", device);
             return BAD_VALUE;
         }
 
@@ -253,9 +245,6 @@ AudioSystem::device_connection_state AudioPolicyManagerBase::getDeviceConnection
             if (audio_is_usb_device(device) &&
                 (!mHasUsb || (address != "" && mUsbCardAndDevice != address))) {
                 ALOGE("getDeviceConnectionState() invalid device: %x", device);
-                return state;
-            }
-            if (audio_is_remote_submix_device((audio_devices_t)device) && !mHasRemoteSubmix) {
                 return state;
             }
             state = AudioSystem::DEVICE_STATE_AVAILABLE;
@@ -1289,7 +1278,7 @@ AudioPolicyManagerBase::AudioPolicyManagerBase(AudioPolicyClientInterface *clien
     mPhoneState(AudioSystem::MODE_NORMAL),
     mLimitRingtoneVolume(false), mLastVoiceVolume(-1.0f),
     mTotalEffectsCpuLoad(0), mTotalEffectsMemory(0),
-    mA2dpSuspended(false), mHasA2dp(false), mHasUsb(false), mHasRemoteSubmix(false)
+    mA2dpSuspended(false), mHasA2dp(false), mHasUsb(false)
 {
     mpClientInterface = clientInterface;
 
@@ -2208,7 +2197,7 @@ audio_devices_t AudioPolicyManagerBase::getDeviceForStrategy(routing_strategy st
         uint32_t device2 = AUDIO_DEVICE_NONE;
         if (strategy != STRATEGY_SONIFICATION) {
             // no sonification on remote submix (e.g. WFD)
-            device2 = mAvailableOutputDevices & AUDIO_DEVICE_OUT_REMOTE_SUBMIX;
+            device2 = mAvailableOutputDevices;
         }
         if ((device2 == AUDIO_DEVICE_NONE) &&
                 mHasA2dp && (mForceUse[AudioSystem::FOR_MEDIA] != AudioSystem::FORCE_NO_BT_A2DP) &&
@@ -2451,11 +2440,6 @@ audio_devices_t AudioPolicyManagerBase::getDeviceForInputSource(int inputSource)
             device = AUDIO_DEVICE_IN_VOICE_CALL;
         }
         break;
-    case AUDIO_SOURCE_REMOTE_SUBMIX:
-        if (mAvailableInputDevices & AUDIO_DEVICE_IN_REMOTE_SUBMIX) {
-            device = AUDIO_DEVICE_IN_REMOTE_SUBMIX;
-        }
-        break;
     default:
         ALOGW("getDeviceForInputSource() invalid input source %d", inputSource);
         break;
@@ -2468,7 +2452,7 @@ bool AudioPolicyManagerBase::isVirtualInputDevice(audio_devices_t device)
 {
     if ((device & AUDIO_DEVICE_BIT_IN) != 0) {
         device &= ~AUDIO_DEVICE_BIT_IN;
-        if ((popcount(device) == 1) && ((device & ~APM_AUDIO_IN_DEVICE_VIRTUAL_ALL) == 0))
+        if (popcount(device) == 1)
             return true;
     }
     return false;
@@ -2531,7 +2515,6 @@ AudioPolicyManagerBase::device_category AudioPolicyManagerBase::getDeviceCategor
         case AUDIO_DEVICE_OUT_AUX_DIGITAL:
         case AUDIO_DEVICE_OUT_USB_ACCESSORY:
         case AUDIO_DEVICE_OUT_USB_DEVICE:
-        case AUDIO_DEVICE_OUT_REMOTE_SUBMIX:
         default:
             return DEVICE_CATEGORY_SPEAKER;
     }
@@ -3351,14 +3334,12 @@ const struct StringToEnum sDeviceNameToEnumTable[] = {
     STRING_TO_ENUM(AUDIO_DEVICE_OUT_USB_DEVICE),
     STRING_TO_ENUM(AUDIO_DEVICE_OUT_USB_ACCESSORY),
     STRING_TO_ENUM(AUDIO_DEVICE_OUT_ALL_USB),
-    STRING_TO_ENUM(AUDIO_DEVICE_OUT_REMOTE_SUBMIX),
     STRING_TO_ENUM(AUDIO_DEVICE_IN_BUILTIN_MIC),
     STRING_TO_ENUM(AUDIO_DEVICE_IN_BLUETOOTH_SCO_HEADSET),
     STRING_TO_ENUM(AUDIO_DEVICE_IN_WIRED_HEADSET),
     STRING_TO_ENUM(AUDIO_DEVICE_IN_AUX_DIGITAL),
     STRING_TO_ENUM(AUDIO_DEVICE_IN_VOICE_CALL),
     STRING_TO_ENUM(AUDIO_DEVICE_IN_BACK_MIC),
-    STRING_TO_ENUM(AUDIO_DEVICE_IN_REMOTE_SUBMIX),
     STRING_TO_ENUM(AUDIO_DEVICE_IN_ANLG_DOCK_HEADSET),
     STRING_TO_ENUM(AUDIO_DEVICE_IN_DGTL_DOCK_HEADSET),
     STRING_TO_ENUM(AUDIO_DEVICE_IN_USB_ACCESSORY),
@@ -3632,8 +3613,6 @@ void AudioPolicyManagerBase::loadHwModule(cnode *root)
             mHasA2dp = true;
         } else if (strcmp(root->name, AUDIO_HARDWARE_MODULE_ID_USB) == 0) {
             mHasUsb = true;
-        } else if (strcmp(root->name, AUDIO_HARDWARE_MODULE_ID_REMOTE_SUBMIX) == 0) {
-            mHasRemoteSubmix = true;
         }
 
         node = node->first_child;
