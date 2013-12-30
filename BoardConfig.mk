@@ -47,7 +47,10 @@ TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 
 # Kernel
-TARGET_PREBUILT_KERNEL := device/bq/maxwell2plus/kernel
+TARGET_KERNEL_SOURCE := kernel/bq/maxwell2plus
+TARGET_KERNEL_CONFIG := cyanogenmod_maxwell2plus_defconfig
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
+BOARD_USES_UNCOMPRESSED_BOOT := true
 BOARD_KERNEL_BASE := 0x60400000
 BOARD_KERNEL_PAGESIZE := 16384
 
