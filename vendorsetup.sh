@@ -19,9 +19,9 @@ add_lunch_combo full_maxwell2plus-userdebug
 # Run device patches on the tree.
 sh device/bq/maxwell2plus/patches/apply.sh
 
+# HDMI files and patches
+cp -r device/bq/maxwell2plus/hdmi/files/. packages/apps/Settings/
+sh device/bq/maxwell2plus/hdmi/patches/apply.sh
+
 # Remove kernel git folder.
 rm -rf kernel/bq/maxwell2plus/.git
-
-# Copy HDMI icons.
-cp device/bq/maxwell2plus/config/hdmi-icons/ic_settings_hdmi.png packages/apps/Settings/res/drawable-mdpi/ic_settings_hdmi.png
-cp device/bq/maxwell2plus/config/hdmi-icons/ic_settings_screen_scale.png packages/apps/Settings/res/drawable-mdpi/ic_settings_screen_scale.png
