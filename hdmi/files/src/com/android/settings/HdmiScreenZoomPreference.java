@@ -55,7 +55,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 public class HdmiScreenZoomPreference extends SeekBarDialogPreference implements
-        SeekBar.OnSeekBarChangeListener, CheckBox.OnCheckedChangeListener {
+    SeekBar.OnSeekBarChangeListener, CheckBox.OnCheckedChangeListener {
 
     private static final String TAG = "HdmiScreenZoomPreference";
     private static final int MINIMUN_SCREEN_SCALE = 0;
@@ -63,12 +63,12 @@ public class HdmiScreenZoomPreference extends SeekBarDialogPreference implements
 
     private File HdmiScale = new File("/sys/class/display/HDMI/scale");
     private SeekBar mSeekBar;
-    private int     mOldScale = 0;
-    private int     mValue = 0;
-    private int     mRestoreValue = 0;
+    private int mOldScale = 0;
+    private int mValue = 0;
+    private int mRestoreValue = 0;
     private boolean mFlag  = false;
-	//for save hdmi config
-    private	Context	context;
+    //for save hdmi config
+    private Context context;
 
     public HdmiScreenZoomPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -81,39 +81,37 @@ public class HdmiScreenZoomPreference extends SeekBarDialogPreference implements
 		}
     }
 
-    protected void setHdmiScreenScale(File file, int value){
-        if (file.exists()){
+    protected void setHdmiScreenScale(File file, int value) {
+        if (file.exists()) {
  	    try {
-		StringBuffer	strbuf = new StringBuffer(""); 	
+		StringBuffer	strbuf = new StringBuffer("");
 		if(SystemProperties.get("ro.board.platform","none").equals("rk29xx"))
 		{
-				FileReader		fread  = new FileReader(file);
-				BufferedReader 	buffer = new BufferedReader(fread);
-				String  		substr = "scale_set";
-				String			str = null;
-				int				length = 0;	
+				FileReader fread = new FileReader(file);
+				BufferedReader buffer = new BufferedReader(fread);
+				String substr = "scale_set";
+				String str = null;
+				int length = 0;
 
-				while ((str = buffer.readLine()) != null){
+				while ((str = buffer.readLine()) != null) {
 				    length = str.length();
-				    if (length == 13 || length == 12){
+				    if (length == 13 || length == 12) {
 				        String res = str.substring(0, 9);
-				        if (substr.equals(res)){
+				        if (substr.equals(res)) {
 			                 String strValue = String.valueOf(value);
 				         String s = substr + "=" + strValue;
 				         strbuf.append(s + "\n");
-				        }else
-				         {
+				        } else {
 					    strbuf.append(str + "\n");
 					 }
 
-				    }else{
+				    } else {
 					    strbuf.append(str + "\n");
 				    }
 				}
 				buffer.close();
 				fread.close();
-		}else
-		{
+		} else {
                 strbuf.append(value);
 		}
 		OutputStream output = null;
@@ -129,27 +127,27 @@ public class HdmiScreenZoomPreference extends SeekBarDialogPreference implements
 			print.print(strbuf.toString());
 			print.flush();
 			output.close();
-		}catch (FileNotFoundException e){
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-            } catch (IOException e){
+            } catch (IOException e) {
 				Log.e(TAG, "IO Exception");
 	     }
 
-	}else{
+	} else {
 			Log.e(TAG, "File:" + file + "not exists");
 	}
-	if(getFBDualDisplayMode() == 1){
+	if(getFBDualDisplayMode() == 1) {
 		SystemProperties.set("sys.hdmi_screen.scale",String.valueOf((char)value));
-	}else{
+	} else {
 		SystemProperties.set("sys.hdmi_screen.scale",String.valueOf((char)100));
 	}
     }
 
-    private int getFBDualDisplayMode(){
+    private int getFBDualDisplayMode() {
 	    int mode = 0;
 	    File DualModeFile = new File("/sys/class/graphics/fb0/dual_mode");
-	    if(DualModeFile.exists()){
+	    if(DualModeFile.exists()) {
 		    try {
 			    byte[] buf = new byte[10];
 			    int len = 0;
@@ -166,26 +164,24 @@ public class HdmiScreenZoomPreference extends SeekBarDialogPreference implements
 	    return mode;
     }
 
-
     @Override
     protected void onBindDialogView(View view) {
         super.onBindDialogView(view);
-		
+
 	mFlag = false;
         mSeekBar = getSeekBar(view);
-	//resotre value
+	//restore value
 	SharedPreferences preferences = context.getSharedPreferences("HdmiSettings", context.MODE_PRIVATE);
 	mOldScale = preferences.getInt("scale_set", 100);
 	mOldScale = mOldScale - 80;
-		
+
         mSeekBar.setProgress(mOldScale);
         mSeekBar.setOnSeekBarChangeListener(this);
     }
 
-    public void onProgressChanged(SeekBar seekBar, int progress,
-            boolean fromTouch) {
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {
 	mValue = progress + 80;
-	if (mValue > 100){
+	if (mValue > 100) {
 		mValue = 100;
 	}
 	setHdmiScreenScale(HdmiScale, mValue);
@@ -201,31 +197,30 @@ public class HdmiScreenZoomPreference extends SeekBarDialogPreference implements
 	setHdmiScreenScale(HdmiScale, mValue);
     }
 
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
     }
-
 
     @Override
     protected void onDialogClosed(boolean positiveResult) {
         super.onDialogClosed(positiveResult);
 	//for save config
 	SharedPreferences preferences = context.getSharedPreferences("HdmiSettings", context.MODE_PRIVATE);
-	SharedPreferences.Editor	editor = preferences.edit();
+	SharedPreferences.Editor editor = preferences.edit();
 
-	if (positiveResult){
+	if (positiveResult) {
 		int value = mSeekBar.getProgress() + 80;
 		setHdmiScreenScale(HdmiScale, value);
 	        editor.putInt("scale_set", value);
-	}else{
-		if (mFlag){
+	} else {
+		if (mFlag) {
 			mRestoreValue = mRestoreValue + 80;
-			if (mRestoreValue > 100){
+			if (mRestoreValue > 100) {
 				mRestoreValue = 100;
 			}
 			setHdmiScreenScale(HdmiScale, mRestoreValue);
 			editor.putInt("scale_set", mRestoreValue);
-		}else{
+		} else {
 			//click cancel without any other operations
 			int value = mSeekBar.getProgress() + 80;
 			setHdmiScreenScale(HdmiScale, value);
@@ -235,4 +230,3 @@ public class HdmiScreenZoomPreference extends SeekBarDialogPreference implements
 			editor.commit();
         }
    }
-

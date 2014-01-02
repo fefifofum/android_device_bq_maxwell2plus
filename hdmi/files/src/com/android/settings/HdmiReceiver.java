@@ -38,7 +38,8 @@ import android.os.SystemProperties;
 import android.content.ContentResolver;
 import java.io.RandomAccessFile;
 import static android.provider.Settings.System.HDMI_LCD_TIMEOUT;
-public class HdmiReceiver extends BroadcastReceiver{
+
+public class HdmiReceiver extends BroadcastReceiver {
         private final String ACTION = "android.intent.action.HDMI_AUDIO_PLUG";
 	private static final String TAG = "HdmiReceiver";
 	private File HdmiState = new File("/sys/class/hdmi/hdmi-0/state");
@@ -47,13 +48,12 @@ public class HdmiReceiver extends BroadcastReceiver{
         private File HdmiDisplayMode=new File("/sys/class/display/HDMI/mode");
         private File HdmiDisplayScale=new File("/sys/class/display/HDMI/scale");
 	Context mcontext;
-	
+
     @Override
-    public void onReceive(Context context, Intent intent){
+    public void onReceive(Context context, Intent intent) {
     	mcontext = context;
-        if (intent.getAction().equals(ACTION)){
-		if(SystemProperties.get("ro.board.platform","none").equals("rk29xx"))
-		   {
+        if (intent.getAction().equals(ACTION)) {
+		if(SystemProperties.get("ro.board.platform","none").equals("rk29xx")) {
 			SharedPreferences preferences = context.getSharedPreferences("HdmiSettings", Context.MODE_PRIVATE);
 		        int enable = preferences.getInt("enable", 1);
 			int scale = preferences.getInt("scale_set", 100);
@@ -66,8 +66,7 @@ public class HdmiReceiver extends BroadcastReceiver{
 		        editor.putInt("enable", enable);
 			//restoreDoubleScreenDisplay(HdmiFile);
                         Log.d(TAG,"rk2918board ----enable ="+String.valueOf(enable)+ " scale="+String.valueOf(scale)+" resol="+String.valueOf(resol));
-		}else
-		   {
+		} else {
 		        SharedPreferences preferences = context.getSharedPreferences("Settings", context.MODE_PRIVATE);
                         int enable = preferences.getInt("enable", 1);
 			int resol = preferences.getInt("resolution", 2);
@@ -77,30 +76,27 @@ public class HdmiReceiver extends BroadcastReceiver{
                         SharedPreferences preferences_scale = context.getSharedPreferences("HdmiSettings", Context.MODE_PRIVATE);
                         int scale=preferences_scale.getInt("scale_set",100);
                         restoreHdmiValue(HdmiDisplayScale,scale,"hdmi_scale");
-                        if(getFBDualDisplayMode()==1){
+                        if(getFBDualDisplayMode()==1) {
                            int state=intent.getIntExtra("state", 1);
-                           if(state==1){
+                           if(state==1) {
                            SystemProperties.set("sys.hdmi_screen.scale",String.valueOf((char)scale));
-                           }else{
+                           } else {
                            SystemProperties.set("sys.hdmi_screen.scale",String.valueOf((char)100)); 
                            }
                         }
-                        if(getFBDualDisplayMode()!=0){
+                        if(getFBDualDisplayMode()!=0) {
                            TurnonScreen("0");
                         }
                         Log.d(TAG,"enable ="+String.valueOf(enable)+ " scale="+String.valueOf(scale)+" resol="+String.valueOf(resol));
 	       }
-              
         }
     }
-    
-   
-      private void TurnonScreen(String str){
+
+      private void TurnonScreen(String str) {
         Log.d("dzy","WIRE TurnOnScreen"+String.valueOf(str));
                 //boolean ff = SystemProperties.getBoolean("persist.sys.hdmi_screen", false);
                 ContentResolver resolver = mcontext.getContentResolver();
-                final long currentTimeout = Settings.System.getLong(resolver, HDMI_LCD_TIMEOUT,
-                -1);
+                final long currentTimeout = Settings.System.getLong(resolver, HDMI_LCD_TIMEOUT, -1);
 
                 File HdmiFile = new File("/sys/class/graphics/fb0/blank");
 
@@ -112,13 +108,12 @@ public class HdmiReceiver extends BroadcastReceiver{
                 } catch (IOException re) {
                         Log.e(TAG, "IO Exception");
                 }
-
-
     }
-         private int getFBDualDisplayMode(){
+
+         private int getFBDualDisplayMode() {
             int mode = 0;
             File DualModeFile = new File("/sys/class/graphics/fb0/dual_mode");
-            if(DualModeFile.exists()){
+            if(DualModeFile.exists()) {
                     try {
                             byte[] buf = new byte[10];
                             int len = 0;
@@ -135,63 +130,61 @@ public class HdmiReceiver extends BroadcastReceiver{
             return mode;
     }
 
-	 protected void restoreDoubleScreenDisplay(File file){
-		if (file.exists()){
+	 protected void restoreDoubleScreenDisplay(File file) {
+		if (file.exists()) {
 			try {
 				if(SystemProperties.get("ro.board.platform","none").equals("rk29xx"))
 			{
-					SharedPreferences  sharedPreferences1 = mcontext.getSharedPreferences("HdmiSettings", Context.MODE_PRIVATE);
-				 int enable = sharedPreferences1.getInt("enable", 0);
+				SharedPreferences  sharedPreferences1 = mcontext.getSharedPreferences("HdmiSettings", Context.MODE_PRIVATE);
+				int enable = sharedPreferences1.getInt("enable", 0);
 				String strDouble = "2";
 				RandomAccessFile rdf = null;
 				rdf = new RandomAccessFile(file, "rw");
-				if(enable == 0){
+				if(enable == 0) {
 					rdf.writeBytes("0");
-				}else {
+				} else {
 					rdf.writeBytes(strDouble);
 				} 
-				
-			}else
-			{
+
+			} else {
 				SharedPreferences  sharedPreferences1 = mcontext.getSharedPreferences("HdmiSettings", Context.MODE_PRIVATE);
 				SharedPreferences.Editor editor = sharedPreferences1.edit();
 				String strDouble = "2";
 				RandomAccessFile rdf = null;
 				rdf = new RandomAccessFile(file, "rw");
-				
-				if(HdmiControllerActivity.isHdmiConnected(HdmiState)){
+
+				if(HdmiControllerActivity.isHdmiConnected(HdmiState)) {
 					editor.putInt("enable", 2);
-				}else{
+				} else {
 					editor.putInt("enable", 0);
 				}
-				
+
 				//SystemProperties.set("persist.sys.hdmi_screen", "1");
 				editor.commit();
 				}
 			} catch (IOException re) {
 				Log.e(TAG, "IO Exception");
 			}
-		}else{
+		} else {
 			Log.e(TAG, "File:" + file + "not exists");
 		}
 	}
 
-
-	protected void restoreHdmiValue(File file, int value, String style){
+	protected void restoreHdmiValue(File file, int value, String style) {
                 //Log.d(TAG,"restoreHdmiValue------------------------------");
-		if (file.exists()){
+		if (file.exists()) {
                         //Log.d(TAG,"exists-------------------");
 				try {
-						FileReader		fread  = new FileReader(file);
-						BufferedReader 	buffer = new BufferedReader(fread);
-						StringBuffer	strbuf = new StringBuffer(""); 	
-						String  		substr = null;
-						String			str = null;
-						int				length = 0;	
-	
-			if(SystemProperties.get("ro.board.platform","none").equals("rk29xx")){
+						FileReader fread = new FileReader(file);
+						BufferedReader buffer = new BufferedReader(fread);
+						StringBuffer strbuf = new StringBuffer("");
+						String substr = null;
+						String str = null;
+						int length = 0;
+
+			if(SystemProperties.get("ro.board.platform","none").equals("rk29xx")) {
                                Log.d(TAG,"rk29---------------------");
-			       if(style.equals("enable")){
+			       if(style.equals("enable")) {
 				   Log.d(TAG,"restoreHdmiValue enable");
 				   RandomAccessFile rdf = null;
 				   rdf = new RandomAccessFile(HdmiFile, "rw");
@@ -200,53 +193,49 @@ public class HdmiReceiver extends BroadcastReceiver{
 					   if(HdmiControllerActivity.isHdmiEnableDoubleScreen(HdmiState))
 					    {
 						 rdf.writeBytes(String.valueOf(2));
-					    }else
-					    {
+					    } else {
 						 rdf.writeBytes(String.valueOf(value));
 					    }
-				    }else{
+				    } else {
 							rdf.writeBytes(String.valueOf(value));
 			            }
-				}else{
-				if (style.equals("hdmi_scale")){	
+				} else {
+				if (style.equals("hdmi_scale")){
 					substr = "scale_set";
-					while ((str = buffer.readLine()) != null){
+					while ((str = buffer.readLine()) != null) {
 					length = str.length();
-					if (length == 13 || length == 12){
+					if (length == 13 || length == 12) {
 						String res = str.substring(0, 9);
-						if (substr.equals(res)){
+						if (substr.equals(res)) {
 						String strValue = String.valueOf(value);
 						String s = substr + "=" + strValue;
 						strbuf.append(s + "\n");
-					}else
-					{
+					} else {
 						strbuf.append(str + "\n");
 					}
-					}
-                                 else{
+					} else {
 						strbuf.append(str + "\n");
 								}
 							}
 						}
 
-						if (style.equals("hdmi_resolution")){
+						if (style.equals("hdmi_resolution")) {
 							substr = "resolution";
-							while ((str = buffer.readLine()) != null){
-								if (str.length() == 12){
+							while ((str = buffer.readLine()) != null) {
+								if (str.length() == 12) {
 									String res = str.substring(0, 10);
-									if (substr.equals(res)){
-										String strValue = String.valueOf(value);	
+									if (substr.equals(res)) {
+										String strValue = String.valueOf(value);
 										String s = substr + "=" + strValue;
 										strbuf.append(s + "\n");
-									}else{
+									} else {
 										strbuf.append(str + "\n");
 									}
 
-								}else
-								{
+								} else {
 									strbuf.append(str + "\n");
 								}
-							}							
+							}
 						}
 
 						buffer.close();
@@ -265,25 +254,24 @@ public class HdmiReceiver extends BroadcastReceiver{
 								print.print(strbuf.toString());
 								print.flush();
 								output.close();
-						}catch (FileNotFoundException e){
+						} catch (FileNotFoundException e) {
 								e.printStackTrace();
 						}
 					}
 
-			
-			}else
-			{
 
-						if(style.equals("enable")){
+			} else {
+
+						if(style.equals("enable")) {
 							Log.d(TAG,"restoreHdmiValue enable");
 							RandomAccessFile rdf = null;
 							rdf = new RandomAccessFile(file, "rw");
 							rdf.writeBytes(String.valueOf(value));
 						}
-                                                if(style.equals("hdmi_scale")){
+                                                if(style.equals("hdmi_scale")) {
                                                        OutputStream output = null;
-                                                        OutputStreamWriter outputWrite = null;
-                                                        PrintWriter print = null;
+                                                       OutputStreamWriter outputWrite = null;
+                                                       PrintWriter print = null;
                                                        strbuf.append(value);
                                                        try {
                                                                         output = new FileOutputStream(file);
@@ -292,16 +280,16 @@ public class HdmiReceiver extends BroadcastReceiver{
                                                                         print.print(strbuf.toString());
                                                                         print.flush();
                                                                         output.close();
-                                                        }catch (FileNotFoundException e){
+                                                        } catch (FileNotFoundException e) {
                                                                         e.printStackTrace();
                                                         }
                                                 }
-						if(style.equals("hdmi_resolution")){
+						if(style.equals("hdmi_resolution")) {
 							Log.d(TAG,"restoreHdmiValue hdmi_resolution");
 							OutputStream output = null;
 							OutputStreamWriter outputWrite = null;
 							PrintWriter print = null;
-							switch(value){
+							switch(value) {
 							case 1:
 								strbuf.append("1920x1080p-50\n");
 								break;
@@ -329,22 +317,21 @@ public class HdmiReceiver extends BroadcastReceiver{
 									print.print(strbuf.toString());
 									print.flush();
 									output.close();
-							}catch (FileNotFoundException e){
+							} catch (FileNotFoundException e) {
 									e.printStackTrace();
 							}
 						}
-                  
+
 						buffer.close();
 						fread.close();
 
 				  }
-				} catch (IOException e){
+				} catch (IOException e) {
 					Log.e(TAG, "IO Exception");
 				}
 
-		}else{
+		} else {
 			Log.e(TAG, "File:" + file + "not exists");
 		}
 	}
 }
-
