@@ -22,6 +22,3 @@ sh device/bq/maxwell2plus/patches/apply.sh
 # HDMI files and patches.
 cp -r device/bq/maxwell2plus/hdmi/files/. packages/apps/Settings/
 sh device/bq/maxwell2plus/hdmi/patches/apply.sh
-
-# Remove kernel git folder.
-rm -rf kernel/bq/maxwell2plus/.git
