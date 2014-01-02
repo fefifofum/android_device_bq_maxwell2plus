@@ -1,4 +1,4 @@
-# Copyright (C) 2012 The Android Open Source Project
+# Copyright (C) 2014 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -54,21 +54,14 @@ BOARD_USES_UNCOMPRESSED_BOOT := true
 BOARD_KERNEL_BASE := 0x60400000
 BOARD_KERNEL_PAGESIZE := 16384
 
-# Graphics
-BOARD_EGL_CFG := device/bq/maxwell2plus/config/egl.cfg
-USE_OPENGL_RENDERER := true
-BOARD_USES_HWCOMPOSER := true
-TARGET_USES_ION := true
-BOARD_USES_HDMI := true
-TARGET_HAVE_HDMI_OUT := true
-
 # Wi-Fi
-BOARD_WPA_SUPPLICANT_DRIVER := WEXT
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER        := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
 BOARD_WLAN_DEVICE           := bcmdhd
+BOARD_LEGACY_NL80211_STA_EVENTS := true
 WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/wlan/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA     := "/etc/firmware/fw_RK903b2.bin"
 WIFI_DRIVER_FW_PATH_P2P     := "/etc/firmware/fw_RK903b2_p2p.bin"
@@ -84,6 +77,10 @@ BOARD_BLUEDROID_VENDOR_CONF := device/bq/maxwell2plus/hardware/bluetooth/vnd_max
 
 # Avoid the generation of ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
+
+# Graphics
+BOARD_EGL_CFG := device/bq/maxwell2plus/config/egl.cfg
+USE_OPENGL_RENDERER := true
 
 # Web Rendering
 ENABLE_WEBGL := true
@@ -102,6 +99,7 @@ BOARD_FLASH_BLOCK_SIZE := 16384
 
 # Recovery
 TARGET_RECOVERY_INITRC := device/bq/maxwell2plus/rootdir/recovery.rc
+TARGET_RECOVERY_FSTAB := device/bq/maxwell2plus/rootdir/recovery.fstab
 TARGET_RECOVERY_PRE_COMMAND := "echo -n boot-recovery | busybox dd of=/dev/block/mtdblock0 count=1 conv=sync; sync"
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_HAS_LARGE_FILESYSTEM := true
