@@ -59,7 +59,6 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/rootdir/ueventd.rk30board.rc:root/ueventd.rk30board.rc \
     device/bq/maxwell2plus/rootdir/rk30xxnand_ko.ko.3.0.8+:root/rk30xxnand_ko.ko.3.0.8+ \
     device/bq/maxwell2plus/rootdir/rk30xxnand_ko.ko.3.0.36+:root/rk30xxnand_ko.ko.3.0.36+ \
-    device/bq/maxwell2plus/rootdir/charger:root/charger \
     $(call find-copy-subdir-files,*,device/bq/maxwell2plus/rootdir/images,root/res/images/charger)
 
 # HAL
@@ -78,6 +77,7 @@ PRODUCT_PACKAGES += \
 
 # Other
 PRODUCT_PACKAGES += \
+    charger \
     make_ext4fs \
     setup_fs \
     librs_jni \
