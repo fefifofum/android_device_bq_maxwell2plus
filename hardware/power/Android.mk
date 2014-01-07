@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 LOCAL_PATH := $(call my-dir)
 
 # HAL module implementation stored in
@@ -20,8 +21,8 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := power.c
 LOCAL_SHARED_LIBRARIES := liblog libcutils
-LOCAL_MODULE := power.rk30xx
+LOCAL_MODULE := power.$(TARGET_BOARD_PLATFORM)
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE_TAGS := optional
-LOCAL_CFLAGS += -DTARGET_BOARD_PLATFORM=\"rk30xx\"
+LOCAL_CFLAGS += -DTARGET_BOARD_PLATFORM=\"$(TARGET_BOARD_PLATFORM)\"
 include $(BUILD_SHARED_LIBRARY)
