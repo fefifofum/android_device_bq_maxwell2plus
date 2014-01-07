@@ -46,15 +46,15 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 
-# Kernel
-TARGET_KERNEL_SOURCE := kernel/bq/maxwell2plus
-TARGET_KERNEL_CONFIG := cyanogenmod_maxwell2plus_defconfig
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
-BOARD_USES_UNCOMPRESSED_BOOT := true
-BOARD_KERNEL_BASE := 0x60400000
-BOARD_KERNEL_PAGESIZE := 16384
-BOARD_RK_RAMDISK_ADDRESS := 0x62000000
-BOARD_CUSTOM_BOOTIMG_MK := device/bq/maxwell2plus/mkbootimg.mk
+NEED_WORKAROUND_CORTEX_A9_745320 := true
+
+# Graphics
+BOARD_EGL_CFG := device/bq/maxwell2plus/config/egl.cfg
+USE_OPENGL_RENDERER := true
+
+# Web Rendering
+ENABLE_WEBGL := true
+TARGET_FORCE_CPU_UPLOAD := true
 
 # Wi-Fi
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
@@ -77,27 +77,26 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/bq/maxwell2plus/hardware/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := device/bq/maxwell2plus/hardware/bluetooth/vnd_maxwell2plus.txt
 
-# Avoid the generation of ldrcc instructions
-NEED_WORKAROUND_CORTEX_A9_745320 := true
-
-# Graphics
-BOARD_EGL_CFG := device/bq/maxwell2plus/config/egl.cfg
-USE_OPENGL_RENDERER := true
-
-# Web Rendering
-ENABLE_WEBGL := true
-TARGET_FORCE_CPU_UPLOAD := true
-
-# OTA
-TARGET_OTA_ASSERT_DEVICE := maxwell2plus,bq_Maxwell2Plus
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/bq/maxwell2plus/releasetools/rk_ota_from_target_files
-
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 576716800
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 14906032128
 BOARD_FLASH_BLOCK_SIZE := 16384
+
+# Kernel
+TARGET_KERNEL_SOURCE := kernel/bq/maxwell2plus
+TARGET_KERNEL_CONFIG := cyanogenmod_maxwell2plus_defconfig
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
+BOARD_USES_UNCOMPRESSED_BOOT := true
+BOARD_KERNEL_BASE := 0x60400000
+BOARD_KERNEL_PAGESIZE := 16384
+BOARD_RK_RAMDISK_ADDRESS := 0x62000000
+BOARD_CUSTOM_BOOTIMG_MK := device/bq/maxwell2plus/mkbootimg.mk
+
+# OTA
+TARGET_OTA_ASSERT_DEVICE := maxwell2plus,bq_Maxwell2Plus
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/bq/maxwell2plus/releasetools/rk_ota_from_target_files
 
 # Recovery
 TARGET_RECOVERY_INITRC := device/bq/maxwell2plus/rootdir/recovery.rc
