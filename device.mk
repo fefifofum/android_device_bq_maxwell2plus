@@ -62,6 +62,10 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/bq/maxwell2plus/rootdir/images,root/res/images/charger) \
     $(call find-copy-subdir-files,*,device/bq/maxwell2plus/rootdir/sbin,root/sbin)
 
+# Updater
+PRODUCT_COPY_FILES += \
+    device/bq/maxwell2plus/rkbootimg/updater:obj/EXECUTABLES/updater_intermediates/updater
+
 # HAL
 PRODUCT_PACKAGES += \
     lights.rk30board \

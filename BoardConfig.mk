@@ -94,11 +94,8 @@ BOARD_KERNEL_PAGESIZE := 16384
 BOARD_RK_RAMDISK_ADDRESS := 0x62000000
 BOARD_CUSTOM_BOOTIMG_MK := device/bq/maxwell2plus/mkbootimg.mk
 
-# OTA
-TARGET_OTA_ASSERT_DEVICE := maxwell2plus,bq_Maxwell2Plus
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/bq/maxwell2plus/releasetools/rk_ota_from_target_files
-
 # Recovery
+TARGET_OTA_ASSERT_DEVICE := maxwell2plus,bq_Maxwell2Plus
 TARGET_RECOVERY_INITRC := device/bq/maxwell2plus/rootdir/recovery.rc
 TARGET_RECOVERY_FSTAB := device/bq/maxwell2plus/rootdir/recovery.fstab
 TARGET_RECOVERY_PRE_COMMAND := "echo -n boot-recovery | busybox dd of=/dev/block/mtdblock0 count=1 conv=sync; sync"
