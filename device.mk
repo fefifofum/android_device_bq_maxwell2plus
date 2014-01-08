@@ -68,14 +68,14 @@ PRODUCT_COPY_FILES += \
 
 # HAL
 PRODUCT_PACKAGES += \
-    lights.$(TARGET_BOARD_HARDWARE) \
-    power.$(TARGET_BOARD_PLATFORM) \
-    sensors.$(TARGET_BOARD_HARDWARE)
+    lights.rk30board \
+    power.rk30xx \
+    sensors.rk30board
 
 # Audio
 PRODUCT_PACKAGES += \
-    audio.primary.$(TARGET_BOARD_HARDWARE) \
-    audio_policy.$(TARGET_BOARD_HARDWARE) \
+    audio.primary.rk30board \
+    audio_policy.rk30board \
     audio.a2dp.default \
     audio.r_submix.default \
     audio.usb.default
