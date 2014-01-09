@@ -57,8 +57,7 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/rootdir/init.rk30board.rc:root/init.rk30board.rc \
     device/bq/maxwell2plus/rootdir/init.rk30board.usb.rc:root/init.rk30board.usb.rc \
     device/bq/maxwell2plus/rootdir/ueventd.rk30board.rc:root/ueventd.rk30board.rc \
-    device/bq/maxwell2plus/rootdir/rk30xxnand_ko.ko.3.0.8+:root/rk30xxnand_ko.ko.3.0.8+ \
-    device/bq/maxwell2plus/rootdir/rk30xxnand_ko.ko.3.0.36+:root/rk30xxnand_ko.ko.3.0.36+ \
+    device/bq/maxwell2plus/rootdir/rk30xxnand.ko.3.0.8+:root/rk30xxnand.ko.3.0.8+ \
     $(call find-copy-subdir-files,*,device/bq/maxwell2plus/rootdir/images,root/res/images/charger) \
     $(call find-copy-subdir-files,*,device/bq/maxwell2plus/rootdir/sbin,root/sbin)
 
