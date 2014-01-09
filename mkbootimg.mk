@@ -23,9 +23,9 @@ INSTALLED_RECOVERYIMAGE_TARGET := $(PRODUCT_OUT)/recovery.img
 
 $(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel $(INSTALLED_RAMDISK_TARGET) $(RKBOOTIMG)
 	$(call pretty,"Boot image: $@")
-	$(hide) $(RKBOOTIMG) --kernel $(PRODUCT_OUT)/kernel --ramdisk $(INSTALLED_RAMDISK_TARGET) --base $(BOARD_KERNEL_BASE) --pagesize $(BOARD_KERNEL_PAGESIZE) --ramdiskaddr $(BOARD_RK_RAMDISK_ADDRESS) --output $@
+	$(hide) $(RKBOOTIMG) --kernel $(PRODUCT_OUT)/kernel --ramdisk $(INSTALLED_RAMDISK_TARGET) --output $@
 
 $(INSTALLED_RECOVERYIMAGE_TARGET): $(PRODUCT_OUT)/kernel $(recovery_ramdisk) $(RKBOOTIMG)
 	@echo ----- Making recovery image ------
-	$(hide) $(RKBOOTIMG) --kernel $(PRODUCT_OUT)/kernel --ramdisk $(recovery_ramdisk) --base $(BOARD_KERNEL_BASE) --pagesize $(BOARD_KERNEL_PAGESIZE) --ramdiskaddr $(BOARD_RK_RAMDISK_ADDRESS) --output $@
+	$(hide) $(RKBOOTIMG) --kernel $(PRODUCT_OUT)/kernel --ramdisk $(recovery_ramdisk) --output $@
 	@echo ----- Made recovery image -------- $@

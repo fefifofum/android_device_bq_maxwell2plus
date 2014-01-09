@@ -64,7 +64,7 @@ PRODUCT_COPY_FILES += \
 
 # Updater
 PRODUCT_COPY_FILES += \
-    device/bq/maxwell2plus/rkbootimg/updater:obj/EXECUTABLES/updater_intermediates/updater
+    device/bq/maxwell2plus/rktools/updater:obj/EXECUTABLES/updater_intermediates/updater
 
 # HAL
 PRODUCT_PACKAGES += \
