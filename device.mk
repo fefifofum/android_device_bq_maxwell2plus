@@ -40,14 +40,14 @@ PRODUCT_COPY_FILES += \
 
 # Config files
 PRODUCT_COPY_FILES += \
-    device/bq/maxwell2plus/config/serial_number.sh:system/bin/serial_number.sh \
     device/bq/maxwell2plus/config/audio_policy.conf:system/etc/audio_policy.conf \
-    device/bq/maxwell2plus/config/media_profiles.xml:system/etc/media_profiles.xml \
-    device/bq/maxwell2plus/config/media_codecs.xml:system/etc/media_codecs.xml \
+    device/bq/maxwell2plus/config/egl.cfg:system/lib/egl/egl.cfg \
     device/bq/maxwell2plus/config/gps.conf:system/etc/gps.conf \
     device/bq/maxwell2plus/config/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
-    device/bq/maxwell2plus/config/egl.cfg:system/lib/egl/egl.cfg \
+    device/bq/maxwell2plus/config/media_codecs.xml:system/etc/media_codecs.xml \
+    device/bq/maxwell2plus/config/media_profiles.xml:system/etc/media_profiles.xml \
     device/bq/maxwell2plus/config/rk29-keypad.kl:/system/usr/keylayout/rk29-keypad.kl \
+    device/bq/maxwell2plus/config/serial_number.sh:system/bin/serial_number.sh \
     device/bq/maxwell2plus/config/vold.fstab:system/etc/vold.fstab
 
 # Rootdir
@@ -61,9 +61,9 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/bq/maxwell2plus/rootdir/images,root/res/images/charger) \
     $(call find-copy-subdir-files,*,device/bq/maxwell2plus/rootdir/sbin,root/sbin)
 
-# Updater
+# Update-binary
 PRODUCT_COPY_FILES += \
-    device/bq/maxwell2plus/rktools/updater:obj/EXECUTABLES/updater_intermediates/updater
+    device/bq/maxwell2plus/rktools/update-binary:obj/EXECUTABLES/updater_intermediates/updater
 
 # HAL
 PRODUCT_PACKAGES += \

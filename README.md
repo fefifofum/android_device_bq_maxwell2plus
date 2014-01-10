@@ -1,4 +1,4 @@
-CyanogenMod device configuration for the BQ Maxwell 2 Plus.
+CyanogenMod device configuration for the bq Maxwell 2 Plus.
 
 How to Build
 ---------------
@@ -13,8 +13,8 @@ Use the following local manifest:
     <manifest>
       <remove-project name="CyanogenMod/android_hardware_invensense" />
       <project name="fefifofum/android_device_bq_maxwell2plus" path="device/bq/maxwell2plus" revision="cm-10.1" />
-      <project name="fefifofum/proprietary_vendor_bq" path="vendor/bq" revision="cm-10.1" />
       <project name="fefifofum/android_kernel_bq_maxwell2plus" path="kernel/bq/maxwell2plus" revision="cm-10.1" />
+      <project name="fefifofum/proprietary_vendor_bq" path="vendor/bq" revision="cm-10.1" />
     </manifest>
 
 Sync and build:
