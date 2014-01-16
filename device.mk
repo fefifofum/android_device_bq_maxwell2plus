@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2014 The Android Open Source Project
+# Copyright (C) 2011 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,8 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 PRODUCT_CHARACTERISTICS := tablet
 
@@ -38,32 +36,38 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
-# Config files
+# Prebuilt
 PRODUCT_COPY_FILES += \
-    device/bq/maxwell2plus/config/audio_policy.conf:system/etc/audio_policy.conf \
-    device/bq/maxwell2plus/config/egl.cfg:system/lib/egl/egl.cfg \
-    device/bq/maxwell2plus/config/gps.conf:system/etc/gps.conf \
-    device/bq/maxwell2plus/config/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
-    device/bq/maxwell2plus/config/media_codecs.xml:system/etc/media_codecs.xml \
-    device/bq/maxwell2plus/config/media_profiles.xml:system/etc/media_profiles.xml \
-    device/bq/maxwell2plus/config/rk29-keypad.kl:/system/usr/keylayout/rk29-keypad.kl \
-    device/bq/maxwell2plus/config/serial_number.sh:system/bin/serial_number.sh \
-    device/bq/maxwell2plus/config/vold.fstab:system/etc/vold.fstab
+    device/bq/maxwell2plus/prebuilt/audio_policy.conf:system/etc/audio_policy.conf \
+    device/bq/maxwell2plus/prebuilt/egl.cfg:system/lib/egl/egl.cfg \
+    device/bq/maxwell2plus/prebuilt/gps.conf:system/etc/gps.conf \
+    device/bq/maxwell2plus/prebuilt/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+    device/bq/maxwell2plus/prebuilt/media_codecs.xml:system/etc/media_codecs.xml \
+    device/bq/maxwell2plus/prebuilt/media_profiles.xml:system/etc/media_profiles.xml \
+    device/bq/maxwell2plus/prebuilt/nvram_RK903_26M.cal:system/etc/firmware/nvram_RK903_26M.cal \
+    device/bq/maxwell2plus/prebuilt/registry:system/lib/registry \
+    device/bq/maxwell2plus/prebuilt/rk29-keypad.kl:/system/usr/keylayout/rk29-keypad.kl \
+    device/bq/maxwell2plus/prebuilt/serial_number.sh:system/bin/serial_number.sh \
+    device/bq/maxwell2plus/prebuilt/vold.fstab:system/etc/vold.fstab
 
 # Rootdir
 PRODUCT_COPY_FILES += \
-    device/bq/maxwell2plus/rootdir/init:root/init \
     device/bq/maxwell2plus/rootdir/fstab.rk30board:root/fstab.rk30board \
     device/bq/maxwell2plus/rootdir/init.rk30board.rc:root/init.rk30board.rc \
     device/bq/maxwell2plus/rootdir/init.rk30board.usb.rc:root/init.rk30board.usb.rc \
-    device/bq/maxwell2plus/rootdir/ueventd.rk30board.rc:root/ueventd.rk30board.rc \
-    device/bq/maxwell2plus/rootdir/rk30xxnand.ko.3.0.8+:root/rk30xxnand.ko.3.0.8+ \
-    $(call find-copy-subdir-files,*,device/bq/maxwell2plus/rootdir/images,root/res/images/charger) \
-    $(call find-copy-subdir-files,*,device/bq/maxwell2plus/rootdir/sbin,root/sbin)
+    device/bq/maxwell2plus/rootdir/ueventd.rk30board.rc:root/ueventd.rk30board.rc
 
-# Update-binary
+# Rootdir blobs
 PRODUCT_COPY_FILES += \
-    device/bq/maxwell2plus/rktools/update-binary:obj/EXECUTABLES/updater_intermediates/updater
+    device/bq/maxwell2plus/rootdir/init:root/init \
+    device/bq/maxwell2plus/rootdir/resize2fs:root/sbin/resize2fs \
+    device/bq/maxwell2plus/rootdir/rk30xxnand.ko.3.0.8+:root/rk30xxnand.ko.3.0.8+ \
+    device/bq/maxwell2plus/rootdir/update-binary:obj/EXECUTABLES/updater_intermediates/updater
+
+# Charger
+PRODUCT_PACKAGES += \
+    charger \
+    charger_res_images
 
 # HAL
 PRODUCT_PACKAGES += \
@@ -81,29 +85,27 @@ PRODUCT_PACKAGES += \
 
 # Other
 PRODUCT_PACKAGES += \
-    charger \
     make_ext4fs \
+    resize2fs \
     setup_fs \
     librs_jni \
     libnetcmdiface \
     com.android.future.usb.accessory
 
-# Default config
+# Default props
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=131072 \
     ro.sf.lcd_density=213 \
     ro.sf.hwrotation=180 \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=30 \
-    testing.mediascanner.skiplist=/storage/sdcard0/Android/ \
     ro.config.facelock=enable_facelock \
     persist.facelock.detect_cutoff=5000 \
     persist.facelock.recog_cutoff=5000 \
-    persist.sys.strictmode.visual=false \
     persist.sys.usb.config=mtp \
-    persist.sys.timezone=Europe/Amsterdam \
-    ro.product.locale.language=es \
-    ro.product.locale.region=ES
+    dalvik.vm.debug.alloc=0
 
 # Dalvik heap config
 $(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
+
+# Inherit from the non-open-source side
+$(call inherit-product, vendor/bq/maxwell2plus/maxwell2plus-vendor.mk)

@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2014 The Android Open Source Project
+# Copyright (C) 2011 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,13 +14,18 @@
 # limitations under the License.
 #
 
+# Set first, so they can be overridden by BoardConfigVendor.mk
+BOARD_USES_GENERIC_AUDIO := true
+USE_CAMERA_STUB := true
+
+# Inherit from the proprietary version
 -include vendor/bq/maxwell2plus/BoardConfigVendor.mk
 
-TARGET_BOOTLOADER_BOARD_NAME := bq_Maxwell2Plus
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := rk30xx
 TARGET_BOARD_HARDWARE := rk30board
+TARGET_BOOTLOADER_BOARD_NAME := bq_Maxwell2Plus
 
 TARGET_CPU_ABI  := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -32,7 +37,7 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 
-BOARD_EGL_CFG := device/bq/maxwell2plus/config/egl.cfg
+BOARD_EGL_CFG := device/bq/maxwell2plus/prebuilt/egl.cfg
 USE_OPENGL_RENDERER := true
 
 ENABLE_WEBGL := true
@@ -55,8 +60,8 @@ WIFI_DRIVER_MODULE_NAME     := "wlan"
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/bq/maxwell2plus/hardware/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/bq/maxwell2plus/hardware/bluetooth/vnd_maxwell2plus.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/bq/maxwell2plus/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := device/bq/maxwell2plus/bluetooth/vnd_maxwell2plus.txt
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
@@ -77,9 +82,10 @@ BOARD_CUSTOM_BOOTIMG_MK := device/bq/maxwell2plus/mkbootimg.mk
 TARGET_OTA_ASSERT_DEVICE := maxwell2plus,bq_Maxwell2Plus
 
 # Recovery
-TARGET_RECOVERY_INITRC := device/bq/maxwell2plus/rootdir/recovery.rc
 TARGET_RECOVERY_FSTAB := device/bq/maxwell2plus/rootdir/recovery.fstab
+TARGET_RECOVERY_INITRC := device/bq/maxwell2plus/rootdir/recovery.rc
 TARGET_RECOVERY_PRE_COMMAND := "echo -n boot-recovery | busybox dd of=/dev/block/mtdblock0 count=1 conv=sync; sync"
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
+BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun/file

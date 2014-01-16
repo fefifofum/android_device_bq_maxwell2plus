@@ -1,0 +1,80 @@
+# Binaries
+bin/glgps
+bin/vold
+
+# Libraries
+lib/libion.so
+lib/libjpeghwdec.so
+lib/libjpeghwenc.so
+lib/libOMX_Core.so
+lib/libomxvpu.so
+lib/libomxvpu_enc.so
+lib/librkswscale.so
+lib/libvpu.so
+lib/libyuvtorgb.so
+
+# Statefright
+lib/libapedec.so
+lib/libhtml5_check.so
+lib/libmediaplayerservice.so
+lib/librkwmapro.so
+lib/libstagefright.so
+lib/libstagefrighthw.so
+lib/libstagefright_amrnb_common.so
+lib/libstagefright_avc_common.so
+lib/libstagefright_chromium_http.so
+lib/libstagefright_enc_common.so
+lib/libstagefright_foundation.so
+lib/libstagefright_omx.so
+lib/libstagefright_soft_aacdec.so
+lib/libstagefright_soft_aacenc.so
+lib/libstagefright_soft_amrdec.so
+lib/libstagefright_soft_amrnbenc.so
+lib/libstagefright_soft_amrwbenc.so
+lib/libstagefright_soft_flacenc.so
+lib/libstagefright_soft_g711dec.so
+lib/libstagefright_soft_h264dec.so
+lib/libstagefright_soft_h264enc.so
+lib/libstagefright_soft_mp3dec.so
+lib/libstagefright_soft_mpeg4dec.so
+lib/libstagefright_soft_mpeg4enc.so
+lib/libstagefright_soft_rawdec.so
+lib/libstagefright_soft_vorbisdec.so
+lib/libstagefright_soft_vpxdec.so
+lib/libstagefright_wfd.so
+lib/libstagefright_yuv.so
+
+# DRM
+lib/libdrmdecrypt.so
+vendor/lib/libwvdrm_L3.so
+vendor/lib/libwvm.so
+vendor/lib/libWVStreamControlAPI_L3.so
+vendor/lib/drm/libdrmwvmplugin.so
+
+# Mali
+lib/libMali.so
+lib/libUMP.so
+lib/egl/libEGL_mali.so
+lib/egl/libGLESv1_CM_mali.so
+lib/egl/libGLESv2_mali.so
+
+# HAL
+lib/hw/camera.rk30board.so
+lib/hw/gps.rk30board.so
+lib/hw/gpu.rk30board.so
+lib/hw/gralloc.rk30board.so
+lib/hw/hwcomposer.rk30board.so
+
+# Modules
+lib/modules/mali.ko
+lib/modules/rk29-ipp.ko
+lib/modules/rk30_mirroring.ko.3.0.8+
+lib/modules/rkwifi.ko
+lib/modules/ump.ko
+lib/modules/vpu_service.ko
+
+# Firmware
+etc/firmware/BCM4330B1.hcd
+etc/firmware/fw_RK903b2.bin
+etc/firmware/fw_RK903b2_apsta.bin
+etc/firmware/fw_RK903b2_p2p.bin

@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2014 The Android Open Source Project
+# Copyright (C) 2011 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,6 +16,5 @@
 
 add_lunch_combo full_maxwell2plus-userdebug
 
-# HDMI files and patches.
-cp -r device/bq/maxwell2plus/hdmi/files/. packages/apps/Settings/
-sh device/bq/maxwell2plus/hdmi/patches/apply.sh
+# HDMI settings
+sh device/bq/maxwell2plus/hdmi/hdmi-settings.sh

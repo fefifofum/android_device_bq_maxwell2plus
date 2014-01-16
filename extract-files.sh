@@ -1,5 +1,6 @@
-#
-# Copyright (C) 2011 The Android Open-Source Project
+#!/bin/bash
+
+# Copyright (C) 2011 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,6 +13,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/full_maxwell2plus.mk
+DEVICE=maxwell2plus
+MANUFACTURER=bq
+
+BASE=../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+mkdir -p $BASE
+for FILE in `cat proprietary-blobs.txt | grep -v "^#"`; do
+#    DIR=`dirname $FILE`
+#    if [ ! -d $BASE$DIR ]; then
+#        echo "making $BASE$DIR..."
+#        mkdir -p $BASE$DIR
+#    fi
+    echo Pulling $FILE to $BASE
+#    adb pull $FILE $BASE$FILE
+    adb pull $FILE $BASE/
+done
+
+./setup-makefiles.sh
