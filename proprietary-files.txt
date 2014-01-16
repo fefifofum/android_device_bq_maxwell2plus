@@ -4,12 +4,14 @@ bin/vold
 
 # Libraries
 lib/libion.so
-lib/libjpeghwdec.so
 lib/libjpeghwenc.so
 lib/libOMX_Core.so
 lib/libomxvpu.so
 lib/libomxvpu_enc.so
 lib/librkswscale.so
+lib/libvideoeditor_core.so
+lib/libvideoeditor_jni.so
+lib/libvideoeditorplayer.so
 lib/libvpu.so
 lib/libyuvtorgb.so
 
