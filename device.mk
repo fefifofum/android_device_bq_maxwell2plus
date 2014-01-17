@@ -48,7 +48,7 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/prebuilt/nvram_RK903_26M.cal:system/etc/firmware/nvram_RK903_26M.cal \
     device/bq/maxwell2plus/prebuilt/registry:system/lib/registry \
     device/bq/maxwell2plus/prebuilt/rk29-keypad.kl:/system/usr/keylayout/rk29-keypad.kl \
-    device/bq/maxwell2plus/prebuilt/serial_number.sh:system/bin/serial_number.sh \
+    device/bq/maxwell2plus/prebuilt/rk3xxx:system/bin/rk3xxx \
     device/bq/maxwell2plus/prebuilt/vold.fstab:system/etc/vold.fstab
 
 # Rootdir
