@@ -35,11 +35,13 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
 # Prebuilt
 PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/prebuilt/audio_policy.conf:system/etc/audio_policy.conf \
+    device/bq/maxwell2plus/prebuilt/config.txt:system/etc/firmware/config.txt \
     device/bq/maxwell2plus/prebuilt/egl.cfg:system/lib/egl/egl.cfg \
     device/bq/maxwell2plus/prebuilt/gps.conf:system/etc/gps.conf \
     device/bq/maxwell2plus/prebuilt/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
@@ -62,7 +64,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/rootdir/init:root/init \
     device/bq/maxwell2plus/rootdir/resize2fs:root/sbin/resize2fs \
-    device/bq/maxwell2plus/rootdir/rk30xxnand.ko.3.0.8+:root/rk30xxnand.ko.3.0.8+ \
+    device/bq/maxwell2plus/rootdir/rk30xxnand.ko.3.0.36+:root/rk30xxnand.ko.3.0.36+ \
     device/bq/maxwell2plus/rootdir/update-binary:obj/EXECUTABLES/updater_intermediates/updater
 
 # Charger
