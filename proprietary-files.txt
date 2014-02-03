@@ -1,24 +1,23 @@
 # Binaries
 bin/glgps
-bin/vold
 
 # Libraries
 lib/libion.so
 lib/libjpeghwenc.so
 lib/libOMX_Core.so
-lib/libomxvpu.so
+lib/libomxvpu_dec.so
 lib/libomxvpu_enc.so
 lib/librkswscale.so
 lib/libvideoeditor_core.so
 lib/libvideoeditor_jni.so
 lib/libvideoeditorplayer.so
 lib/libvpu.so
-lib/libyuvtorgb.so
 
 # Statefright
 lib/libapedec.so
-lib/libhtml5_check.so
 lib/libmediaplayerservice.so
+lib/librk_demux.so
+lib/librk_on2.so
 lib/librkwmapro.so
 lib/libstagefright.so
 lib/libstagefrighthw.so
@@ -27,6 +26,7 @@ lib/libstagefright_avc_common.so
 lib/libstagefright_chromium_http.so
 lib/libstagefright_enc_common.so
 lib/libstagefright_foundation.so
+lib/libstagefright_httplive.so
 lib/libstagefright_omx.so
 lib/libstagefright_soft_aacdec.so
 lib/libstagefright_soft_aacenc.so
@@ -35,6 +35,7 @@ lib/libstagefright_soft_amrnbenc.so
 lib/libstagefright_soft_amrwbenc.so
 lib/libstagefright_soft_flacenc.so
 lib/libstagefright_soft_g711dec.so
+lib/libstagefright_soft_gsmdec.so
 lib/libstagefright_soft_h264dec.so
 lib/libstagefright_soft_h264enc.so
 lib/libstagefright_soft_mp3dec.so
@@ -43,15 +44,18 @@ lib/libstagefright_soft_mpeg4enc.so
 lib/libstagefright_soft_rawdec.so
 lib/libstagefright_soft_vorbisdec.so
 lib/libstagefright_soft_vpxdec.so
+lib/libstagefright_soft_vpxenc.so
 lib/libstagefright_wfd.so
 lib/libstagefright_yuv.so
 
-# DRM
-lib/libdrmdecrypt.so
-vendor/lib/libwvdrm_L3.so
-vendor/lib/libwvm.so
-vendor/lib/libWVStreamControlAPI_L3.so
-vendor/lib/drm/libdrmwvmplugin.so
+# Sensors
+lib/libakm8963.so
+lib/libakmd.so
+lib/libami.so
+lib/libami_sensor_mw.so
+lib/libmllite.so
+lib/libmlplatform.so
+lib/libmplmpu.so
 
 # Mali
 lib/libMali.so
@@ -68,6 +72,7 @@ lib/hw/gps.rk30board.so
 lib/hw/gpu.rk30board.so
 lib/hw/gralloc.rk30board.so
 lib/hw/hwcomposer.rk30board.so
+lib/hw/sensors.rk30board.so
 
 # Modules
 lib/modules/mali.ko.3.0.36+

@@ -27,6 +27,7 @@ DEVICE_PACKAGE_OVERLAYS += device/bq/maxwell2plus/overlay
 # Hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.faketouch.xml:system/etc/permissions/android.hardware.faketouch.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
@@ -50,8 +51,7 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/prebuilt/nvram_RK903_26M.cal:system/etc/firmware/nvram_RK903_26M.cal \
     device/bq/maxwell2plus/prebuilt/registry:system/lib/registry \
     device/bq/maxwell2plus/prebuilt/rk29-keypad.kl:/system/usr/keylayout/rk29-keypad.kl \
-    device/bq/maxwell2plus/prebuilt/rk3xxx:system/bin/rk3xxx \
-    device/bq/maxwell2plus/prebuilt/vold.fstab:system/etc/vold.fstab
+    device/bq/maxwell2plus/prebuilt/rk3xxx:system/bin/rk3xxx
 
 # Rootdir
 PRODUCT_COPY_FILES += \
@@ -75,8 +75,7 @@ PRODUCT_PACKAGES += \
 # HAL
 PRODUCT_PACKAGES += \
     lights.rk30board \
-    power.rk30xx \
-    sensors.rk30board
+    power.rk30xx
 
 # Audio
 PRODUCT_PACKAGES += \

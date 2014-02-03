@@ -28,6 +28,7 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_VARIANT := cortex-a9
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
@@ -70,6 +71,7 @@ BOARD_FLASH_BLOCK_SIZE := 16384
 TARGET_KERNEL_SOURCE := kernel/bq/maxwell2plus
 TARGET_KERNEL_CONFIG := cyanogenmod_maxwell2plus_defconfig
 BOARD_USES_UNCOMPRESSED_BOOT := true
+BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_BASE := 0x60408000
 BOARD_KERNEL_PAGESIZE := 16384
 
@@ -77,7 +79,8 @@ BOARD_CUSTOM_BOOTIMG_MK := device/bq/maxwell2plus/mkbootimg.mk
 TARGET_OTA_ASSERT_DEVICE := maxwell2plus,bq_Maxwell2Plus
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/bq/maxwell2plus/rootdir/recovery.fstab
+RECOVERY_FSTAB_VERSION := 2
+TARGET_RECOVERY_FSTAB := device/bq/maxwell2plus/rootdir/fstab.rk30board
 TARGET_RECOVERY_INITRC := device/bq/maxwell2plus/rootdir/recovery.rc
 TARGET_RECOVERY_PRE_COMMAND := "echo -n boot-recovery | busybox dd of=/dev/block/mtdblock0 count=1 conv=sync; sync"
 TARGET_USERIMAGES_USE_EXT4 := true
