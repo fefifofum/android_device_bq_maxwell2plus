@@ -14,10 +14,6 @@
 # limitations under the License.
 #
 
-# Set first, so they can be overridden by BoardConfigVendor.mk
-BOARD_USES_GENERIC_AUDIO := true
-USE_CAMERA_STUB := true
-
 # Inherit from the proprietary version
 -include vendor/bq/maxwell2plus/BoardConfigVendor.mk
 

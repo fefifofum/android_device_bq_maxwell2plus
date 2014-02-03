@@ -15,6 +15,3 @@
 #
 
 add_lunch_combo full_maxwell2plus-userdebug
-
-# HDMI settings
-sh device/bq/maxwell2plus/hdmi/hdmi-settings.sh
