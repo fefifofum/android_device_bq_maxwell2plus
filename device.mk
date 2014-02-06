@@ -75,7 +75,8 @@ PRODUCT_PACKAGES += \
 # HAL
 PRODUCT_PACKAGES += \
     lights.rk30board \
-    power.rk30xx
+    power.rk30xx \
+    sensors.rk30board
 
 # Audio
 PRODUCT_PACKAGES += \

@@ -48,15 +48,6 @@ lib/libstagefright_soft_vpxenc.so
 lib/libstagefright_wfd.so
 lib/libstagefright_yuv.so
 
-# Sensors
-lib/libakm8963.so
-lib/libakmd.so
-lib/libami.so
-lib/libami_sensor_mw.so
-lib/libmllite.so
-lib/libmlplatform.so
-lib/libmplmpu.so
-
 # Mali
 lib/libMali.so
 lib/libUMP.so
@@ -72,7 +63,6 @@ lib/hw/gps.rk30board.so
 lib/hw/gpu.rk30board.so
 lib/hw/gralloc.rk30board.so
 lib/hw/hwcomposer.rk30board.so
-lib/hw/sensors.rk30board.so
 
 # Modules
 lib/modules/mali.ko.3.0.36+
