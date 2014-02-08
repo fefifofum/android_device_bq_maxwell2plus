@@ -49,9 +49,9 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/prebuilt/media_codecs.xml:system/etc/media_codecs.xml \
     device/bq/maxwell2plus/prebuilt/media_profiles.xml:system/etc/media_profiles.xml \
     device/bq/maxwell2plus/prebuilt/nvram_RK903_26M.cal:system/etc/firmware/nvram_RK903_26M.cal \
-    device/bq/maxwell2plus/prebuilt/registry:system/lib/registry \
     device/bq/maxwell2plus/prebuilt/rk29-keypad.kl:/system/usr/keylayout/rk29-keypad.kl \
-    device/bq/maxwell2plus/prebuilt/rk3xxx:system/bin/rk3xxx
+    device/bq/maxwell2plus/prebuilt/rk3xxx:system/bin/rk3xxx \
+    device/bq/maxwell2plus/prebuilt/updater:obj/EXECUTABLES/updater_intermediates/updater
 
 # Rootdir
 PRODUCT_COPY_FILES += \
@@ -64,8 +64,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/rootdir/init:root/init \
     device/bq/maxwell2plus/rootdir/resize2fs:root/sbin/resize2fs \
-    device/bq/maxwell2plus/rootdir/rk30xxnand.ko.3.0.36+:root/rk30xxnand.ko.3.0.36+ \
-    device/bq/maxwell2plus/rootdir/update-binary:obj/EXECUTABLES/updater_intermediates/updater
+    device/bq/maxwell2plus/rootdir/rk30xxnand.ko.3.0.36+:root/rk30xxnand.ko.3.0.36+
 
 # Charger
 PRODUCT_PACKAGES += \
