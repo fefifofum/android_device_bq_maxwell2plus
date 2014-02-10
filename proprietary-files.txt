@@ -2,25 +2,25 @@
 bin/glgps
 
 # Libraries
+lib/libapedec.so
 lib/libion.so
 lib/libjpeghwenc.so
+lib/libmediaplayerservice.so
 lib/libOMX_Core.so
 lib/libomxvpu_dec.so
 lib/libomxvpu_enc.so
 lib/libRkOMX_Resourcemanager.so
 lib/librkswscale.so
+lib/librkwmapro.so
+lib/librk_audio.so
+lib/librk_demux.so
+lib/librk_on2.so
 lib/libvideoeditor_core.so
 lib/libvideoeditor_jni.so
 lib/libvideoeditorplayer.so
 lib/libvpu.so
 
 # Statefright
-lib/libapedec.so
-lib/libmediaplayerservice.so
-lib/librk_audio.so
-lib/librk_demux.so
-lib/librk_on2.so
-lib/librkwmapro.so
 lib/libstagefright.so
 lib/libstagefrighthw.so
 lib/libstagefright_amrnb_common.so
