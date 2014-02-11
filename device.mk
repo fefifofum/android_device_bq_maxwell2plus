@@ -49,9 +49,11 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/prebuilt/media_codecs.xml:system/etc/media_codecs.xml \
     device/bq/maxwell2plus/prebuilt/media_profiles.xml:system/etc/media_profiles.xml \
     device/bq/maxwell2plus/prebuilt/nvram_RK903_26M.cal:system/etc/firmware/nvram_RK903_26M.cal \
+    device/bq/maxwell2plus/prebuilt/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
     device/bq/maxwell2plus/prebuilt/rk29-keypad.kl:/system/usr/keylayout/rk29-keypad.kl \
     device/bq/maxwell2plus/prebuilt/rk3xxx:system/bin/rk3xxx \
-    device/bq/maxwell2plus/prebuilt/updater:obj/EXECUTABLES/updater_intermediates/updater
+    device/bq/maxwell2plus/prebuilt/updater:obj/EXECUTABLES/updater_intermediates/updater \
+    device/bq/maxwell2plus/prebuilt/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
 # Rootdir
 PRODUCT_COPY_FILES += \
