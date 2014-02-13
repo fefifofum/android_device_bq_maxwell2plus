@@ -64,6 +64,7 @@ PRODUCT_COPY_FILES += \
 
 # Rootdir blobs
 PRODUCT_COPY_FILES += \
+    device/bq/maxwell2plus/rootdir/drmboot.ko:root/drmboot.ko \
     device/bq/maxwell2plus/rootdir/init:root/init \
     device/bq/maxwell2plus/rootdir/resize2fs:root/sbin/resize2fs \
     device/bq/maxwell2plus/rootdir/rk30xxnand.ko.3.0.36+:root/rk30xxnand.ko.3.0.36+
