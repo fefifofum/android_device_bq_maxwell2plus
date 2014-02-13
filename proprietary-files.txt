@@ -1,11 +1,10 @@
 # Binaries
 bin/glgps
+bin/wfd
 
 # Libraries
-lib/libapedec.so
 lib/libion.so
 lib/libjpeghwenc.so
-lib/libmediaplayerservice.so
 lib/libOMX_Core.so
 lib/libomxvpu_dec.so
 lib/libomxvpu_enc.so
@@ -16,39 +15,16 @@ lib/librk_audio.so
 lib/librk_demux.so
 lib/librk_on2.so
 lib/libvideoeditor_core.so
-lib/libvideoeditor_jni.so
 lib/libvideoeditorplayer.so
 lib/libvpu.so
 
 # Statefright
 lib/libstagefright.so
 lib/libstagefrighthw.so
-lib/libstagefright_amrnb_common.so
-lib/libstagefright_avc_common.so
 lib/libstagefright_chromium_http.so
-lib/libstagefright_enc_common.so
 lib/libstagefright_foundation.so
-lib/libstagefright_httplive.so
-lib/libstagefright_omx.so
-lib/libstagefright_soft_aacdec.so
-lib/libstagefright_soft_aacenc.so
-lib/libstagefright_soft_amrdec.so
-lib/libstagefright_soft_amrnbenc.so
-lib/libstagefright_soft_amrwbenc.so
-lib/libstagefright_soft_flacenc.so
-lib/libstagefright_soft_g711dec.so
-lib/libstagefright_soft_gsmdec.so
-lib/libstagefright_soft_h264dec.so
-lib/libstagefright_soft_h264enc.so
 lib/libstagefright_soft_mp3dec.so
-lib/libstagefright_soft_mpeg4dec.so
-lib/libstagefright_soft_mpeg4enc.so
-lib/libstagefright_soft_rawdec.so
-lib/libstagefright_soft_vorbisdec.so
-lib/libstagefright_soft_vpxdec.so
-lib/libstagefright_soft_vpxenc.so
 lib/libstagefright_wfd.so
-lib/libstagefright_yuv.so
 
 # Mali
 lib/libMali.so
