@@ -45,7 +45,6 @@ lib/hw/hwcomposer.rk30board.so
 # Modules
 lib/modules/mali.ko.3.0.36+
 lib/modules/rk29-ipp.ko.3.0.36+
-lib/modules/rkwifi.ko
 lib/modules/ump.ko.3.0.36+
 lib/modules/vpu_service.ko.3.0.36+
 
@@ -53,4 +52,3 @@ lib/modules/vpu_service.ko.3.0.36+
 etc/firmware/BCM4330B1.hcd
 etc/firmware/fw_RK903b2.bin
 etc/firmware/fw_RK903b2_apsta.bin
-etc/firmware/fw_RK903b2_p2p.bin
