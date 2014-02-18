@@ -44,9 +44,7 @@ lib/hw/hwcomposer.rk30board.so
 
 # Modules
 lib/modules/mali.ko.3.0.36+
-lib/modules/rk29-ipp.ko.3.0.36+
 lib/modules/ump.ko.3.0.36+
-lib/modules/vpu_service.ko.3.0.36+
 
 # Firmware
 etc/firmware/BCM4330B1.hcd
