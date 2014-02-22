@@ -79,7 +79,6 @@ TARGET_OTA_ASSERT_DEVICE := maxwell2plus,bq_Maxwell2Plus
 # Recovery
 RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_FSTAB := device/bq/maxwell2plus/rootdir/fstab.rk30board
-TARGET_RECOVERY_INITRC := device/bq/maxwell2plus/rootdir/recovery.rc
 TARGET_RECOVERY_PRE_COMMAND := "echo -n boot-recovery | busybox dd of=/dev/block/mtdblock0 count=1 conv=sync; sync"
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_HAS_LARGE_FILESYSTEM := true

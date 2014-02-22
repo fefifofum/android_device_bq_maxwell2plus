@@ -56,6 +56,7 @@ PRODUCT_COPY_FILES += \
 # Rootdir
 PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/rootdir/fstab.rk30board:root/fstab.rk30board \
+    device/bq/maxwell2plus/rootdir/init.recovery.rk30board.rc:root/init.recovery.rk30board.rc \
     device/bq/maxwell2plus/rootdir/init.rk30board.rc:root/init.rk30board.rc \
     device/bq/maxwell2plus/rootdir/init.rk30board.usb.rc:root/init.rk30board.usb.rc \
     device/bq/maxwell2plus/rootdir/ueventd.rk30board.rc:root/ueventd.rk30board.rc
