@@ -84,3 +84,5 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun/file
+BOARD_CUSTOM_GRAPHICS := ../../../device/bq/maxwell2plus/recovery/graphics.c graphics_overlay.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/bq/maxwell2plus/recovery/recovery_keys.c
