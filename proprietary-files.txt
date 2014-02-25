@@ -32,6 +32,8 @@ lib/libUMP.so
 lib/egl/libEGL_mali.so
 lib/egl/libGLESv1_CM_mali.so
 lib/egl/libGLESv2_mali.so
+lib/modules/mali.ko.3.0.36+
+lib/modules/ump.ko.3.0.36+
 
 # HAL
 lib/hw/camera.rk30board.so
@@ -39,10 +41,6 @@ lib/hw/gps.rk30board.so
 lib/hw/gpu.rk30board.so
 lib/hw/gralloc.rk30board.so
 lib/hw/hwcomposer.rk30board.so
-
-# Modules
-lib/modules/mali.ko.3.0.36+
-lib/modules/ump.ko.3.0.36+
 
 # Firmware
 etc/firmware/BCM4330B1.hcd
