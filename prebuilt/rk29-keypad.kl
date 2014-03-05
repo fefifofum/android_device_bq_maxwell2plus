@@ -1,7 +1,7 @@
 key 59    MENU
 key 102   HOME
-key 114   VOLUME_DOWN
-key 115   VOLUME_UP
+key 114   VOLUME_UP
+key 115   VOLUME_DOWN
 key 116   POWER             WAKE
 key 143   NOTIFICATION      WAKE
 key 158   BACK
