@@ -98,6 +98,7 @@ on boot
     write /dev/ttyS3 123456
     chmod 0664 /dev/ttyS3
     chown gps system /dev/ttyS3
+
     mkdir /data/gps 770 gps system
     chown gps system /data/gps
 
