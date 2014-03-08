@@ -49,6 +49,9 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/prebuilt/media_codecs.xml:system/etc/media_codecs.xml \
     device/bq/maxwell2plus/prebuilt/media_profiles.xml:system/etc/media_profiles.xml \
     device/bq/maxwell2plus/prebuilt/nvram_RK903_26M.cal:system/etc/firmware/nvram_RK903_26M.cal \
+    device/bq/maxwell2plus/prebuilt/packages-compat.xml:system/etc/packages-compat.xml \
+    device/bq/maxwell2plus/prebuilt/packages-composer.xml:system/etc/packages-composer.xml \
+    device/bq/maxwell2plus/prebuilt/performance_info.xml:system/etc/performance_info.xml \
     device/bq/maxwell2plus/prebuilt/rk29-keypad.kl:/system/usr/keylayout/rk29-keypad.kl \
     device/bq/maxwell2plus/prebuilt/rk-sn:system/bin/rk-sn \
     device/bq/maxwell2plus/prebuilt/updater:obj/EXECUTABLES/updater_intermediates/updater

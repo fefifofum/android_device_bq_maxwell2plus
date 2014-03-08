@@ -1,5 +1,6 @@
 # Binaries
 bin/glgps
+bin/performance
 bin/wfd
 
 # Libraries
@@ -8,6 +9,7 @@ lib/libjpeghwenc.so
 lib/libOMX_Core.so
 lib/libomxvpu_dec.so
 lib/libomxvpu_enc.so
+lib/libperformance_runtime.so
 lib/libRkOMX_Resourcemanager.so
 lib/librkswscale.so
 lib/librkwmapro.so
