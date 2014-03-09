@@ -101,13 +101,15 @@ PRODUCT_PACKAGES += \
 # Default props
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=131072 \
-    ro.sf.lcd_density=213 \
     ro.sf.hwrotation=180 \
-    wifi.interface=wlan0 \
+    ro.sf.lcd_density=213 \
+    ro.sf.lcdc_composer=0 \
+    debug.hwui.render_dirty_regions=false \
     ro.config.facelock=enable_facelock \
     persist.facelock.detect_cutoff=5000 \
     persist.facelock.recog_cutoff=5000 \
     persist.sys.usb.config=mtp \
+    wifi.interface=wlan0 \
     dalvik.vm.debug.alloc=0
 
 # Wifi overlay
