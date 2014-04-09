@@ -5,10 +5,11 @@
        acPortName="/dev/ttyS3"
        lBaudRate="115200"
        
-       cLogEnabled="false"
+       cLogEnabled="true"
        acLogDirectory="/data/gps/log/"
 	   
        gpioNStdbyPath="/sys/class/gpio/gpio315/value"
+       gpioNResetPath="/sys/class/gpio/gpio316/value"
        gpioDelayMs="100"
 
        acNvStoDir="/data/gps/"
@@ -44,12 +45,15 @@
     SensorsRawAcclGyroEnable="true"
   />
 
-  <gll 
-    LogPriMask="LOG_DEBUG"
-    LogFacMask="LOG_GLLAPI | LOG_NMEA" 
-    FrqPlan="FRQ_PLAN_26MHZ_2PPM_26MHZ_300PPB"
-    RfType="GL_RF_47511_BRCM_EXT_LNA"
-  />
+	<gll 
+	    LogPriMask="LOG_INFO"
+	    LogFacMask="LOG_GLLAPI | LOG_NMEA"
+	    FrqPlan="FRQ_PLAN_26MHZ_2PPM"
+	    RfType="GL_RF_47511_BRCM_EXT_LNA"
+	    WarmStandbyTimeout1Seconds="0"
+	    WarmStandbyTimeout2Seconds="0"
+		PsfNotConnected="true"
+	/>
 <job id="Periodic">
     <task>
         <req_pos/>
