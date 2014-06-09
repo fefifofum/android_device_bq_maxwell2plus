@@ -53,8 +53,7 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/prebuilt/packages-composer.xml:system/etc/packages-composer.xml \
     device/bq/maxwell2plus/prebuilt/performance_info.xml:system/etc/performance_info.xml \
     device/bq/maxwell2plus/prebuilt/rk29-keypad.kl:/system/usr/keylayout/rk29-keypad.kl \
-    device/bq/maxwell2plus/prebuilt/rk3x:system/bin/rk3x \
-    device/bq/maxwell2plus/prebuilt/updater:obj/EXECUTABLES/updater_intermediates/updater
+    device/bq/maxwell2plus/prebuilt/rk3x:system/bin/rk3x
 
 # Rootdir
 PRODUCT_COPY_FILES += \
