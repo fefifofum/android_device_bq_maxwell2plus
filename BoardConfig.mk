@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2011 The Android Open Source Project
+# Copyright (C) 2014 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -85,4 +85,4 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun/file
 BOARD_CUSTOM_GRAPHICS := ../../../device/bq/maxwell2plus/recovery/graphics.c graphics_overlay.c
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/bq/maxwell2plus/recovery/recovery_keys.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/bq/maxwell2plus/recovery/default_recovery_keys.c

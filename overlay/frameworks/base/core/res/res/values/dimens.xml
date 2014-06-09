@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Height of the bottom navigation bar in portrait. -->
-    <dimen name="navigation_bar_height">40dp</dimen>
+    <dimen name="navigation_bar_height">44dp</dimen>
     <!-- Height of the bottom navigation bar in landscape. -->
-    <dimen name="navigation_bar_height_landscape">36dp</dimen>
+    <dimen name="navigation_bar_height_landscape">40dp</dimen>
 </resources>

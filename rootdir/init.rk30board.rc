@@ -70,20 +70,28 @@ on boot
     chown root system /sys/class/graphics/fb0/blank
     chmod 0664 /sys/class/graphics/fb0/blank
 
-    # Bluetooth
+    # Bluetooth: UART device
     chmod 0660 /dev/ttyS0
     chmod 0660 /dev/vflash
     chown bluetooth net_bt_stack /dev/ttyS0
     chown bluetooth net_bt_stack /dev/vflash
 
+    # Bluetooth: power up/down interface
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chmod 0660 /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
 
+    # Bluetooth: MAC address programming
     chown bluetooth net_bt_stack /data/misc/bluetooth
     chown bluetooth net_bt_stack ro.bt.bdaddr_path
     setprop ro.bt.bdaddr_path "/data/misc/bluetooth/bt_addr"
+
+    # Bluetooth LPM
+    chmod 0220 /proc/bluetooth/sleep/lpm
+    chmod 0220 /proc/bluetooth/sleep/btwrite
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
     
     # GPS
     write /sys/class/gpio/export 316             # GPS reset
@@ -92,19 +100,21 @@ on boot
     write /sys/class/gpio/gpio315/direction out
     write /sys/class/gpio/gpio316/value 1
     write /sys/class/gpio/gpio315/value 0
+    write /dev/ttyS3 123456
+
     chmod 0664 /sys/class/gpio/gpio315/value
     chown gps system /sys/class/gpio/gpio315/value
 
-    write /dev/ttyS3 123456
     chmod 0664 /dev/ttyS3
     chown gps system /dev/ttyS3
 
-    mkdir /data/gps 770 gps system
+    mkdir /data/gps
+    chmod 770 /data/gps
     chown gps system /data/gps
 
 
-# Set device serial number
-service rk-sn /system/bin/sh /system/bin/rk-sn
+# Rockchip specific commands
+service rk3x /system/bin/sh /system/bin/rk3x
     class main
 
 # Virtual sdcard daemon running as media_rw (1023)
@@ -195,7 +205,7 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service battery_charger /charger
+service charger /charger
     class charger
 
 on property:sys.gmali.performance=ui

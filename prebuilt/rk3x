@@ -1,0 +1,10 @@
+#!/sbin/sh
+
+# Set device serial number
+setprop ro.serialno $(cat /data/misc/sn)
+
+# Fix audit permissions
+chown audit /data/misc/audit
+
+# Fix I/O scheduler permissions
+chown system /sys/block/mtdblock*/queue/scheduler

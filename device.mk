@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2011 The Android Open Source Project
+# Copyright (C) 2014 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -53,7 +53,7 @@ PRODUCT_COPY_FILES += \
     device/bq/maxwell2plus/prebuilt/packages-composer.xml:system/etc/packages-composer.xml \
     device/bq/maxwell2plus/prebuilt/performance_info.xml:system/etc/performance_info.xml \
     device/bq/maxwell2plus/prebuilt/rk29-keypad.kl:/system/usr/keylayout/rk29-keypad.kl \
-    device/bq/maxwell2plus/prebuilt/rk-sn:system/bin/rk-sn \
+    device/bq/maxwell2plus/prebuilt/rk3x:system/bin/rk3x \
     device/bq/maxwell2plus/prebuilt/updater:obj/EXECUTABLES/updater_intermediates/updater
 
 # Rootdir
@@ -96,6 +96,8 @@ PRODUCT_PACKAGES += \
     setup_fs \
     librs_jni \
     libnetcmdiface \
+    libMcClient \
+    mcDriverDaemon \
     com.android.future.usb.accessory
 
 # Default props
@@ -117,6 +119,3 @@ $(call inherit-product, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 
 # Dalvik heap config
 $(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
-
-# Inherit from the non-open-source side
-$(call inherit-product, vendor/bq/maxwell2plus/maxwell2plus-vendor.mk)
